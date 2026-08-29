@@ -81,3 +81,5 @@ Astro builds to `dist/`, which `wrangler.jsonc` already points at. Pushes to
 
 (Alternatively, deploy as a Cloudflare Pages project: framework preset **Astro**,
 build command `npm run build`, output directory `dist`.)
+
+Check build log for error
