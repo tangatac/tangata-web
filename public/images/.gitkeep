@@ -1,0 +1,3 @@
+# Put blog images in this folder.
+# A file saved here as, e.g., calm-room.jpg is referenced in a post as:
+#   ![A calm counselling room](/images/calm-room.jpg)

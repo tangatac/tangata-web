@@ -1,12 +1,12 @@
 {
-  // Static-assets-only Worker: no server code, just the demo site in ./public
-  // NOTE: "name" must match the Worker you created in the Cloudflare dashboard,
-  // otherwise `wrangler deploy` will create a second Worker under this name.
+  // Static-assets-only Worker. Astro builds the site into ./dist, and this Worker
+  // just serves those files. "name" must match the Worker created in the Cloudflare
+  // dashboard, otherwise `wrangler deploy` will create a second Worker.
   "name": "tangata-web",
   "compatibility_date": "2026-08-28",
   "assets": {
-    "directory": "./public",
-    // One-page demo: send unknown paths to index.html rather than a 404
-    "not_found_handling": "single-page-application"
+    "directory": "./dist",
+    // Astro generates a real 404.html, so serve that for unknown paths.
+    "not_found_handling": "404-page"
   }
 }

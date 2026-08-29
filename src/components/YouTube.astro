@@ -1,0 +1,25 @@
+---
+import { youTubeId } from '../lib/youtube.mjs';
+
+interface Props {
+  url: string;
+  title?: string;
+}
+
+const { url, title = 'YouTube video player' } = Astro.props;
+const id = youTubeId(url);
+---
+{
+  id && (
+    <div class="video-embed">
+      <iframe
+        src={`https://www.youtube-nocookie.com/embed/${id}`}
+        title={title}
+        loading="lazy"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      />
+    </div>
+  )
+}

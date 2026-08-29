@@ -1,0 +1,65 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { formatDate } from '../../lib/format.mjs';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+
+// Category chips are built from whatever categories the posts actually use.
+const categories = [...new Set(posts.map((p) => p.data.category))].sort();
+const thumbClass = ['', 'b', 'c'];
+---
+<BaseLayout
+  title="Blog"
+  description="Short, honest pieces on how therapy works and small things that can help — written between sessions, in plain English."
+>
+  <section class="article-hero">
+    <div class="wrap">
+      <div class="eyebrow">The Tangata blog</div>
+      <h1>Thoughts on therapy, EMDR &amp; wellbeing</h1>
+      <p style="color:var(--muted);max-width:34em;margin-top:8px;">
+        Short, honest pieces on how therapy works and small things that can help — written between
+        sessions, in plain English.
+      </p>
+    </div>
+  </section>
+  <section class="band">
+    <div class="wrap">
+      {
+        categories.length > 1 && (
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;">
+            <span class="chip" style="background:var(--teal);color:#fff;">All</span>
+            {categories.map((c) => (
+              <span class="chip">{c}</span>
+            ))}
+          </div>
+        )
+      }
+      {
+        posts.length === 0 ? (
+          <p>No posts yet — check back soon.</p>
+        ) : (
+          <div class="post-grid">
+            {posts.map((post, i) => (
+              <a class="post" href={`/blog/${post.id}`}>
+                <div class:list={['thumb', thumbClass[i % 3]]}>
+                  <svg class="swirlbg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                    <path d="M50,10 A40,40 0 1 1 10,50 A30,30 0 1 1 50,20" fill="none" stroke="#fff" stroke-width="3" />
+                  </svg>
+                </div>
+                <div class="body">
+                  <span class="chip">{post.data.category}</span>
+                  <h3>{post.data.title}</h3>
+                  <p>{post.data.description}</p>
+                  <div class="meta">{formatDate(post.data.date)}</div>
+                </div>
+              </a>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>

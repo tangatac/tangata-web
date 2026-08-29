@@ -1,0 +1,67 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { formatDate } from '../../lib/format.mjs';
+import { youTubeId } from '../../lib/youtube.mjs';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content, remarkPluginFrontmatter } = await render(post);
+const { title, description, date, category, author, youtube } = post.data;
+const readTime = remarkPluginFrontmatter.minutesRead as string | undefined;
+const heroVideoId = youtube ? youTubeId(youtube) : null;
+---
+<BaseLayout title={title} description={description}>
+  <section class="article-hero">
+    <div class="wrap">
+      <a class="back" href="/blog">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
+        Back to the blog
+      </a>
+      <div class="art-meta">
+        <span class="chip" style="margin:0;">{category}</span>
+        <span>{formatDate(date)}</span>
+        {readTime && <span>· {readTime}</span>}
+        <span>· by {author}</span>
+      </div>
+      <h1>{title}</h1>
+    </div>
+  </section>
+
+  <article class="article-body">
+    {
+      heroVideoId && (
+        <div class="video-embed">
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${heroVideoId}`}
+            title={title}
+            loading="lazy"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          />
+        </div>
+      )
+    }
+
+    <Content />
+
+    <div class="author-box">
+      <div class="av" aria-hidden="true"></div>
+      <div>
+        <b>{author}</b>
+        <p>BACP-accredited counsellor and EMDR therapist working in Fishponds and central Bristol.</p>
+      </div>
+    </div>
+
+    <div class="article-cta">
+      <h3>Have a question?</h3>
+      <p>Book a free, no-obligation 15-minute chat and we'll talk it through.</p>
+      <a class="btn btn-primary" href="/#contact">Book a free chat</a>
+    </div>
+  </article>
+</BaseLayout>

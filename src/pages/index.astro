@@ -1,0 +1,225 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { formatDate } from '../lib/format.mjs';
+import { youTubeId } from '../lib/youtube.mjs';
+
+// ── Hero explainer video ──────────────────────────────────────────────
+// Paste a YouTube link between the quotes to show it in the hero.
+// Leave it empty ('') to show the placeholder box instead.
+const heroVideo = '';
+const heroVideoId = youTubeId(heroVideo);
+
+// ── Latest blog posts (pulled automatically from src/content/blog) ─────
+const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+const thumbClass = ['', 'b', 'c'];
+---
+<BaseLayout>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">EMDR &amp; integrative counselling · Bristol</div>
+        <h1>Gently move past<br />what's <em>holding you back</em>.</h1>
+        <p class="lede">
+          I'm Nick — a BACP-accredited counsellor and EMDR therapist in Bristol. I help people work
+          through trauma, anxiety, and the memories that keep pulling them back, at a pace that feels
+          safe.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="/#contact">Book a free 15-minute chat</a>
+          <a class="btn btn-ghost" href="/#emdr">What is EMDR?</a>
+        </div>
+        <div class="trust-row">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>BACP accredited</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>DBS checked</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Registered MBACP</span>
+        </div>
+      </div>
+      {heroVideoId ? (
+        <div class="hero-media has-video">
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${heroVideoId}`}
+            title="What EMDR is, in 90 seconds"
+            loading="lazy"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+      ) : (
+        <div class="hero-media">
+          <svg class="swirlbg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M50,10 A40,40 0 1 1 10,50 A30,30 0 1 1 50,20 A20,20 0 1 1 30,40" fill="none" stroke="#fff" stroke-width="3"/></svg>
+          <div class="play">
+            <div class="play-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="play-cap">Watch: what EMDR is, in 90 seconds</div>
+          </div>
+          <div class="photo-note">your explainer video embeds here</div>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class="band" id="emdr">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">How EMDR can help</div>
+        <h2>A different way to work through difficult experiences</h2>
+        <p>
+          EMDR (Eye Movement Desensitisation and Reprocessing) is a recognised, evidence-based
+          therapy. It can help with more than you might expect.
+        </p>
+      </div>
+      <div class="cards">
+        <a class="card" href="/blog/what-is-emdr">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3>Trauma &amp; PTSD</h3>
+          <p>For memories that still feel raw, EMDR can help take the charge out of what happened so it stays in the past.</p>
+          <span class="more">Learn more →</span>
+        </a>
+        <a class="card" href="/blog/what-is-emdr">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div>
+          <h3>Anxiety</h3>
+          <p>When your mind's alarm system is stuck on high, we can work to calm the patterns underneath the worry.</p>
+          <span class="more">Learn more →</span>
+        </a>
+        <a class="card" href="/blog/what-is-emdr">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <h3>Phobias</h3>
+          <p>Specific fears can be reprocessed so they no longer take over the moments they used to.</p>
+          <span class="more">Learn more →</span>
+        </a>
+        <a class="card" href="/blog/what-is-emdr">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21C7 17 3 13 3 8.5A4.5 4.5 0 0112 6a4.5 4.5 0 019 2.5C21 13 17 17 12 21z"/></svg></div>
+          <h3>Grief &amp; loss</h3>
+          <p>Bereavement can leave us stuck in a moment. Therapy offers space to grieve and slowly find your footing.</p>
+          <span class="more">Learn more →</span>
+        </a>
+        <a class="card" href="/blog/what-is-emdr">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6L5.7 21 8 14 2 9.4h7.6z"/></svg></div>
+          <h3>Low self-esteem</h3>
+          <p>The beliefs we form about ourselves early on can be gently revisited and softened over time.</p>
+          <span class="more">Learn more →</span>
+        </a>
+        <a class="card" href="/#contact">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+          <h3>Something else?</h3>
+          <p>Not sure if EMDR or counselling is right for what you're facing? Let's talk it through, with no pressure.</p>
+          <span class="more">Get in touch →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint" id="howiwork">
+    <div class="wrap split">
+      <div class="media">
+        <svg class="swirlbg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M50,10 A40,40 0 1 1 10,50 A30,30 0 1 1 50,20 A20,20 0 1 1 30,40" fill="none" stroke="#123f4a" stroke-width="3"/></svg>
+        <div class="photo-note" style="color:rgba(18,63,74,.4)">warm photo of your room here</div>
+      </div>
+      <div>
+        <h2>Counselling that fits you, not the other way around</h2>
+        <p>
+          Alongside EMDR, I work as an integrative, person-centred counsellor. That means our
+          sessions are led by you and what you need — I draw on whatever approach fits, rather than
+          forcing one method.
+        </p>
+        <p>
+          Our relationship and your sense of safety come first. Everything moves at a pace that feels
+          right for you.
+        </p>
+        <ul class="tick">
+          <li>A calm, confidential space to be heard without judgement</li>
+          <li>Face-to-face in Bristol, or online if that suits you better</li>
+          <li>Creative techniques available when talking alone isn't enough</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Trusted &amp; accredited</div>
+        <h2>Care you can feel confident in</h2>
+      </div>
+      <div class="creds">
+        <div class="cred"><div class="badge">BACP</div><div><b>Accredited member</b><small>Reg. 375989 · Ethical Framework</small></div></div>
+        <div class="cred"><div class="badge">DBS</div><div><b>Fully DBS checked</b><small>Enhanced disclosure</small></div></div>
+        <div class="cred"><div class="badge">EMDR</div><div><b>Trained EMDR therapist</b><small>Trauma-focused practice</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Where I work</div>
+        <h2>Two easy-to-reach Bristol locations</h2>
+      </div>
+      <div class="locs">
+        <div class="loc"><div class="pin">Fishponds · BS16</div><h3>Fishponds counselling room</h3><p>A quiet, comfortable room with parking nearby — the home of my creative and EMDR work.</p></div>
+        <div class="loc"><div class="pin">Central Bristol</div><h3>Central Bristol room</h3><p>Conveniently located for those working in or travelling into the city centre.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">In their words</div>
+        <h2>What working together can feel like</h2>
+      </div>
+      <div class="quotes">
+        <div class="quote"><p>&ldquo;For the first time I felt genuinely heard, and something that had weighed on me for years finally lifted.&rdquo;</p><div class="who">— example placement</div></div>
+        <div class="quote"><p>&ldquo;Nick made EMDR feel safe and completely unhurried. I never felt pushed.&rdquo;</p><div class="who">— example placement</div></div>
+        <div class="quote"><p>&ldquo;I came in sceptical and left with tools I still use every day.&rdquo;</p><div class="who">— example placement</div></div>
+      </div>
+      <p class="ph-note">Your own anonymised client feedback would appear here — with consent, and no identifying details.</p>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">From the blog</div>
+        <h2>Thoughts on therapy &amp; wellbeing</h2>
+      </div>
+      <div class="post-grid">
+        {recentPosts.map((post, i) => (
+          <a class="post" href={`/blog/${post.id}`}>
+            <div class:list={['thumb', thumbClass[i % 3]]}>
+              <svg class="swirlbg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M50,10 A40,40 0 1 1 10,50 A30,30 0 1 1 50,20" fill="none" stroke="#fff" stroke-width="3"/></svg>
+            </div>
+            <div class="body">
+              <span class="chip">{post.data.category}</span>
+              <h3>{post.data.title}</h3>
+              <p>{post.data.description}</p>
+              <div class="meta">{formatDate(post.data.date)}</div>
+            </div>
+          </a>
+        ))}
+      </div>
+      <p style="text-align:center;margin-top:28px;">
+        <a class="btn btn-ghost" href="/blog">Read the blog</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="ctaband" id="contact">
+    <div class="wrap">
+      <h2>Not sure where to start? That's okay.</h2>
+      <p>
+        The first step is simply a conversation. Book a free, no-obligation 15-minute call and we'll
+        talk about what's going on and whether I can help.
+      </p>
+      <a class="btn btn-primary" href="mailto:nick@tangata-counselling.co.uk">Book a free 15-minute chat</a>
+      <div class="contact-line">
+        Or reach me directly:
+        <a href="mailto:nick@tangata-counselling.co.uk">nick@tangata-counselling.co.uk</a> ·
+        <a href="tel:07988136267">07988 136267</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
