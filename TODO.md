@@ -4,7 +4,7 @@
 - [x] Greg: add social links to site placeholder icons in footer 
 - [ ] swap `#` for real socials URLs in src/lib/site.mjs
 - [x] Greg: add JSON-LD and other SEO, add blog navigation buttons (sitemap, robots.txt, OG/Twitter tags, structured data, prev/next post nav)
-- [ ] Greg: add author image
+- [x] Greg: add author image
 - [ ] Greg: analytics tracking from socials
 - [ ] Nick: check site branding, colours, images
 - [ ] ....
