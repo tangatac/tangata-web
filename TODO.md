@@ -1,0 +1,12 @@
+- [x] Greg: migrate to Astro & tested
+- [x] Greg: build command and location set on claudflare
+- [ ] Nick: social handles information
+- [ ] Greg: add social links to site (YT, Insta, TikTok...?)
+- [ ] Greg: add JSON-LD and other SEO, add blog navigation buttons
+- [ ] Greg: 
+- [ ] Greg: analytics tracking from socials
+- [ ] Nick: check site branding, colours, images
+- [ ] ....
+- [ ] Both: final site approved, tested and externally validated
+- [ ] Greg: domain migration
+- [ ] Nick: close down previous hosting
