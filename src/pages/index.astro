@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { formatDate } from '../lib/format.mjs';
 import { youTubeId } from '../lib/youtube.mjs';
+import { SITE } from '../lib/site.mjs';
 
 // ── Hero explainer video ──────────────────────────────────────────────
 // Paste a YouTube link between the quotes to show it in the hero.
@@ -15,8 +16,46 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 3);
 const thumbClass = ['', 'b', 'c'];
+
+// ── Structured data ──────────────────────────────────────────────────
+const services = [
+  ['EMDR therapy', 'Evidence-based therapy for trauma and distressing memories.'],
+  ['Trauma & PTSD counselling', 'Support for single-incident and longer-standing trauma.'],
+  ['Anxiety counselling', 'Help calming the patterns underneath persistent worry and panic.'],
+  ['Phobia treatment', 'Reprocessing specific fears so they no longer take over.'],
+  ['Grief & bereavement counselling', 'Space to grieve a loss that feels stuck.'],
+  ['Integrative counselling', 'Person-centred talking therapy, led by you and what you need.'],
+];
+
+const homeJsonLd = [
+  {
+    '@type': 'WebPage',
+    '@id': `${SITE.url}/#webpage`,
+    url: SITE.url + '/',
+    name: `${SITE.name} — EMDR & Counselling in Bristol`,
+    description: SITE.description,
+    isPartOf: { '@id': `${SITE.url}/#website` },
+    about: { '@id': `${SITE.url}/#practice` },
+    inLanguage: 'en-GB',
+  },
+  {
+    '@type': 'OfferCatalog',
+    name: 'Counselling & EMDR services',
+    provider: { '@id': `${SITE.url}/#practice` },
+    itemListElement: services.map(([name, description]) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name,
+        description,
+        provider: { '@id': `${SITE.url}/#practice` },
+        areaServed: SITE.areaServed.map((n) => ({ '@type': 'Place', name: n })),
+      },
+    })),
+  },
+];
 ---
-<BaseLayout>
+<BaseLayout jsonLd={homeJsonLd}>
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
@@ -72,31 +111,31 @@ const thumbClass = ['', 'b', 'c'];
         </p>
       </div>
       <div class="cards">
-        <a class="card" href="/blog/what-is-emdr">
+        <a class="card" href="/blog/what-is-emdr/">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
           <h3>Trauma &amp; PTSD</h3>
           <p>For memories that still feel raw, EMDR can help take the charge out of what happened so it stays in the past.</p>
           <span class="more">Learn more →</span>
         </a>
-        <a class="card" href="/blog/what-is-emdr">
+        <a class="card" href="/blog/what-is-emdr/">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div>
           <h3>Anxiety</h3>
           <p>When your mind's alarm system is stuck on high, we can work to calm the patterns underneath the worry.</p>
           <span class="more">Learn more →</span>
         </a>
-        <a class="card" href="/blog/what-is-emdr">
+        <a class="card" href="/blog/what-is-emdr/">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
           <h3>Phobias</h3>
           <p>Specific fears can be reprocessed so they no longer take over the moments they used to.</p>
           <span class="more">Learn more →</span>
         </a>
-        <a class="card" href="/blog/what-is-emdr">
+        <a class="card" href="/blog/what-is-emdr/">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21C7 17 3 13 3 8.5A4.5 4.5 0 0112 6a4.5 4.5 0 019 2.5C21 13 17 17 12 21z"/></svg></div>
           <h3>Grief &amp; loss</h3>
           <p>Bereavement can leave us stuck in a moment. Therapy offers space to grieve and slowly find your footing.</p>
           <span class="more">Learn more →</span>
         </a>
-        <a class="card" href="/blog/what-is-emdr">
+        <a class="card" href="/blog/what-is-emdr/">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6L5.7 21 8 14 2 9.4h7.6z"/></svg></div>
           <h3>Low self-esteem</h3>
           <p>The beliefs we form about ourselves early on can be gently revisited and softened over time.</p>
@@ -188,7 +227,7 @@ const thumbClass = ['', 'b', 'c'];
       </div>
       <div class="post-grid">
         {recentPosts.map((post, i) => (
-          <a class="post" href={`/blog/${post.id}`}>
+          <a class="post" href={`/blog/${post.id}/`}>
             <div class:list={['thumb', thumbClass[i % 3]]}>
               <svg class="swirlbg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M50,10 A40,40 0 1 1 10,50 A30,30 0 1 1 50,20" fill="none" stroke="#fff" stroke-width="3"/></svg>
             </div>
@@ -202,7 +241,7 @@ const thumbClass = ['', 'b', 'c'];
         ))}
       </div>
       <p style="text-align:center;margin-top:28px;">
-        <a class="btn btn-ghost" href="/blog">Read the blog</a>
+        <a class="btn btn-ghost" href="/blog/">Read the blog</a>
       </p>
     </div>
   </section>

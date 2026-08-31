@@ -1,0 +1,20 @@
+---
+/**
+ * Renders one <script type="application/ld+json"> block.
+ * Pass a single schema object or an array of nodes; an array is wrapped in an
+ * @graph. The @context is added automatically.
+ */
+interface Props {
+  schema: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { schema } = Astro.props;
+
+const doc = Array.isArray(schema)
+  ? { '@context': 'https://schema.org', '@graph': schema }
+  : { '@context': 'https://schema.org', ...schema };
+
+// Escape "<" so a string value can never break out of the <script> element.
+const json = JSON.stringify(doc).replace(/</g, '\\u003c');
+---
+<script type="application/ld+json" is:inline set:html={json} />

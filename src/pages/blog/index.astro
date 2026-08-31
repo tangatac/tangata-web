@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { formatDate } from '../../lib/format.mjs';
+import { SITE, absoluteUrl, breadcrumbSchema } from '../../lib/site.mjs';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime(),
@@ -10,11 +11,35 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
 // Category chips are built from whatever categories the posts actually use.
 const categories = [...new Set(posts.map((p) => p.data.category))].sort();
 const thumbClass = ['', 'b', 'c'];
+
+const description =
+  'Short, honest pieces on how therapy works and small things that can help — written between sessions, in plain English.';
+
+const blogSchema = {
+  '@type': 'Blog',
+  '@id': `${SITE.url}/blog/#blog`,
+  name: `${SITE.name} blog`,
+  description,
+  url: absoluteUrl('/blog/'),
+  inLanguage: 'en-GB',
+  publisher: { '@id': `${SITE.url}/#practice` },
+  blogPost: posts.map((post) => ({
+    '@type': 'BlogPosting',
+    headline: post.data.title,
+    description: post.data.description,
+    url: absoluteUrl(`/blog/${post.id}/`),
+    datePublished: post.data.date.toISOString(),
+    dateModified: (post.data.updated ?? post.data.date).toISOString(),
+    author: { '@type': 'Person', name: post.data.author, '@id': `${SITE.url}/#nick` },
+  })),
+};
+
+const breadcrumbs = breadcrumbSchema([
+  { name: 'Home', path: '/' },
+  { name: 'Blog', path: '/blog/' },
+]);
 ---
-<BaseLayout
-  title="Blog"
-  description="Short, honest pieces on how therapy works and small things that can help — written between sessions, in plain English."
->
+<BaseLayout title="Blog" description={description} jsonLd={[blogSchema, breadcrumbs]}>
   <section class="article-hero">
     <div class="wrap">
       <div class="eyebrow">The Tangata blog</div>
@@ -43,7 +68,7 @@ const thumbClass = ['', 'b', 'c'];
         ) : (
           <div class="post-grid">
             {posts.map((post, i) => (
-              <a class="post" href={`/blog/${post.id}`}>
+              <a class="post" href={`/blog/${post.id}/`}>
                 <div class:list={['thumb', thumbClass[i % 3]]}>
                   <svg class="swirlbg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
                     <path d="M50,10 A40,40 0 1 1 10,50 A30,30 0 1 1 50,20" fill="none" stroke="#fff" stroke-width="3" />

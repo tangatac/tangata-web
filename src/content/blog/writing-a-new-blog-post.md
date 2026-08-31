@@ -60,8 +60,10 @@ More text.
 | `title`       | Yes       | The headline, shown on the post and on cards linking to it.                 |
 | `description` | Yes       | One or two sentences. Shown on the blog listing and in Google results.     |
 | `date`        | Yes       | Format `YYYY-MM-DD`. Controls the order posts appear in (newest first).    |
+| `updated`     | No        | Format `YYYY-MM-DD`. Set this when you meaningfully revise a published post — search engines use it as the "last updated" date. |
 | `category`    | No        | A short label like `EMDR`, `Anxiety`, `Wellbeing`. Defaults to `Wellbeing`. |
 | `author`      | No        | Defaults to `Nick Tuftnell`.                                               |
+| `image`       | No        | e.g. `/images/calm-room.jpg`. The picture shown when the post is shared on social media. |
 | `youtube`     | No        | A YouTube link. Adds a video player at the very top of the post.           |
 | `draft`       | No        | `true` hides the post from the live site while you're still working on it. |
 

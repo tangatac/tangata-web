@@ -12,8 +12,10 @@ const blog = defineCollection({
     date: z.coerce.date(), // e.g. 2026-08-29
 
     // Optional
+    updated: z.coerce.date().optional(), // set when you meaningfully revise a published post
     category: z.string().default('Wellbeing'), // e.g. EMDR, Anxiety, Trauma, Counselling
     author: z.string().default('Nick Tuftnell'),
+    image: z.string().optional(), // e.g. /images/calm-room.jpg — used as the social share image
     youtube: z.string().optional(), // a YouTube link — shows a video at the top of the post
     draft: z.boolean().default(false), // true = hidden from the live site (work in progress)
   }),
