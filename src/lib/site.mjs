@@ -41,10 +41,12 @@ export const SITE = {
 // icon): Instagram, Facebook, LinkedIn, YouTube, TikTok, X. Add or remove rows
 // to match the accounts Nick actually uses.
 export const SOCIAL_LINKS = [
-  { label: 'Instagram', href: '#' },
+  { label: 'Instagram', href: 'https://www.instagram.com/tangata_counselling/' },
+  { label: 'YouTube', href: 'https://www.youtube.com/@tangata_counselling' },
+  // TikTok handle is temporary — Nick plans to move to @tangata_counselling once the rename is allowed (~mid Sept 2026).
+  { label: 'TikTok', href: 'https://www.tiktok.com/@nicktemdr' },
   { label: 'Facebook', href: '#' },
   { label: 'LinkedIn', href: '#' },
-  { label: 'YouTube', href: '#' },
 ];
 
 /** Real (non-placeholder) social URLs, for structured-data `sameAs`. */
