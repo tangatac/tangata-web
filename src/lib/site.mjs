@@ -13,7 +13,7 @@ export const SITE = {
   // Falls back to Astro.site in code, but kept here for convenience.
   url: 'https://tangata-counselling.co.uk',
   description:
-    'BACP-accredited EMDR therapy and integrative counselling in Fishponds and central Bristol. A safe, confidential space to be heard.',
+    'BACP-accredited EMDR therapy and integrative counselling in Bristol. A safe, confidential space to be heard.',
   locale: 'en_GB',
   email: 'nick@tangata-counselling.co.uk',
   telephone: '+44 7988 136267',
@@ -33,7 +33,7 @@ export const SITE = {
     postalCode: 'BS16',
     country: 'GB',
   },
-  areaServed: ['Bristol', 'Fishponds', 'Bristol city centre'],
+  areaServed: ['Bristol', 'Fishponds'],
   priceRange: '££',
 };
 
