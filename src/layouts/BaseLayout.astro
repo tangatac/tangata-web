@@ -7,6 +7,7 @@ import { SITE, baseGraph } from '../lib/site.mjs';
 
 interface Props {
   title?: string;
+  metaTitle?: string;
   description?: string;
   /** Page type for Open Graph. Use 'article' for blog posts. */
   type?: 'website' | 'article';
@@ -24,6 +25,7 @@ interface Props {
 
 const {
   title,
+  metaTitle,
   description = SITE.description,
   type = 'website',
   image = SITE.ogImage,
@@ -34,7 +36,7 @@ const {
 } = Astro.props;
 
 const siteName = SITE.name;
-const fullTitle = title ? `${title} — ${siteName}` : `${siteName} — EMDR & Counselling in Bristol`;
+const fullTitle = metaTitle ?? (title ? `${title} — ${siteName}` : `${siteName} — EMDR & Counselling in Bristol`);
 
 const base = Astro.site ?? new URL(SITE.url);
 const canonical = new URL(Astro.url.pathname, base);

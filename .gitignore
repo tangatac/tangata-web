@@ -10,6 +10,8 @@ node_modules/
 # environment
 .env
 .env.production
+# temporary source material
+_copilot-input/
 # macOS
 .DS_Store
 # logs

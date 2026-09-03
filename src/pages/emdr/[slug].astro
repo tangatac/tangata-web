@@ -1,0 +1,47 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE, absoluteUrl, breadcrumbSchema } from '../../lib/site.mjs';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('emdr');
+  return pages.map((page) => ({ params: { slug: page.data.slug ?? page.id }, props: { page } }));
+}
+
+const { page } = Astro.props;
+const { Content } = await render(page);
+const { title, description, seoTitle, slug = page.id } = page.data;
+const url = absoluteUrl(`/emdr/${slug}/`);
+const breadcrumbs = breadcrumbSchema([
+  { name: 'Home', path: '/' },
+  { name: 'EMDR', path: '/#emdr' },
+  { name: title, path: `/emdr/${slug}/` },
+]);
+const service = {
+  '@type': 'Service',
+  '@id': `${url}#service`,
+  name: title,
+  description,
+  url,
+  provider: { '@id': `${SITE.url}/#practice` },
+  areaServed: SITE.areaServed.map((name) => ({ '@type': 'Place', name })),
+};
+---
+<BaseLayout title={title} metaTitle={seoTitle} description={description} jsonLd={[service, breadcrumbs]}>
+  <section class="article-hero">
+    <div class="wrap">
+      <a class="back" href="/#emdr">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
+        Back to EMDR topics
+      </a>
+      <div class="eyebrow">EMDR &amp; integrative counselling</div>
+      <h1>{title}</h1>
+    </div>
+  </section>
+
+  <article class="article-body">
+    <Content />
+
+    <p>For a fuller explanation of EMDR, read <a href="/blog/what-is-emdr/">What is EMDR?</a></p>
+  </article>
+</BaseLayout>
