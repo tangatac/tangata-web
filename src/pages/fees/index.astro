@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE, absoluteUrl, breadcrumbSchema } from '../../lib/site.mjs';
+
+const title = 'Fees and practical information';
+const description =
+  'Clear session fees and practical information for counselling and EMDR therapy with Nick Tuftnell at Tangata Counselling in Bristol.';
+const url = absoluteUrl('/fees/');
+const breadcrumbs = breadcrumbSchema([
+  { name: 'Home', path: '/' },
+  { name: 'Fees', path: '/fees/' },
+]);
+const webPage = {
+  '@type': 'WebPage',
+  '@id': `${url}#webpage`,
+  name: title,
+  description,
+  url,
+  about: { '@id': `${SITE.url}/#practice` },
+};
+---
+<BaseLayout title={title} description={description} jsonLd={[webPage, breadcrumbs]}>
+  <section class="article-hero">
+    <div class="wrap">
+      <div class="eyebrow">Fees &amp; practical information</div>
+      <h1>{title}</h1>
+    </div>
+  </section>
+
+  <article class="article-body">
+    <p>Therapy is a personal decision, but practical details matter too. I want the cost to be clear before we decide whether to work together.</p>
+
+    <h2>A free introductory chat</h2>
+    <p>I offer a free 15-minute introductory chat. This is an opportunity to tell me a little about what is happening for you, ask any questions and get a sense of whether working together might feel right.</p>
+    <p>There is no obligation to book a therapy session afterwards.</p>
+
+    <h2>Session fees</h2>
+    <p>Sessions can be 60, 75 or 90 minutes. Longer sessions can sometimes be helpful for EMDR, but they are not automatically better. We can discuss which session length may be most appropriate for you.</p>
+    <ul class="fee-list">
+      <li><strong>60 minutes</strong><strong>£72</strong></li>
+      <li><strong>75 minutes</strong><strong>£90</strong></li>
+      <li><strong>90 minutes</strong><strong>£108</strong></li>
+    </ul>
+
+    <h2>Reduced-fee sessions</h2>
+    <p>I also offer a limited number of reduced-fee sessions:</p>
+    <ul class="fee-list">
+      <li><strong>60 minutes</strong><strong>£45</strong></li>
+    </ul>
+    <p>Please ask if you would like to know whether one is currently available.</p>
+
+    <h2>Payment</h2>
+    <p>Payment is made weekly, either online or in cash, and is due before the 24-hour cancellation period begins.</p>
+
+    <h2>Cancellations</h2>
+    <p>If you need to cancel or rearrange a session, please give at least 24 hours’ notice. When less than 24 hours’ notice is given, the full session fee is payable.</p>
+    <p>This helps me manage appointments fairly and protect the time reserved specifically for you.</p>
+
+    <div class="article-cta">
+      <h2>Ready to talk?</h2>
+      <p>You do not need to decide on a session length before contacting me. We can begin with a free 15-minute chat and talk about what might suit you.</p>
+      <a class="btn btn-primary" href="/#contact">Book a free 15-minute chat</a>
+    </div>
+  </article>
+</BaseLayout>
