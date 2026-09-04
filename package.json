@@ -1,17 +1,25 @@
 {
-  "name": "tangata-web",
-  "type": "module",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/sitemap": "^3.7.3",
-    "astro": "^5.13.0"
-  }
+    "name": "tangata-web",
+    "type": "module",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "start": "astro dev",
+        "test:debug": "playwright test --debug",
+        "build": "astro build",
+        "dev": "astro dev",
+        "test": "playwright test",
+        "astro": "astro",
+        "preview": "astro preview",
+        "test:a11y": "playwright test tests/accessibility.spec.js"
+    },
+    "dependencies": {
+        "@astrojs/sitemap": "^3.7.3",
+        "astro": "^5.13.0"
+    },
+    "devDependencies": {
+        "@axe-core/playwright": "^4.13.0",
+        "@playwright/test": "^1.62.1",
+        "axe-core": "^4.13.0"
+    }
 }

@@ -102,8 +102,11 @@ const graph = [...baseGraph(base.href.replace(/\/$/, '')), ...jsonLd];
     <JsonLd schema={graph} />
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <Nav />
-    <slot />
+    <main id="main-content">
+      <slot />
+    </main>
     <Footer />
   </body>
 </html>

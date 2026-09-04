@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE, absoluteUrl, breadcrumbSchema } from '../../lib/site.mjs';
+
+const title = 'Accessibility';
+const description =
+  'Our commitment to accessible counselling and therapy. How to request adjustments, access our services in different formats, and report accessibility issues.';
+const url = absoluteUrl('/accessibility/');
+const breadcrumbs = breadcrumbSchema([
+  { name: 'Home', path: '/' },
+  { name: 'Accessibility', path: '/accessibility/' },
+]);
+const webPage = {
+  '@type': 'WebPage',
+  '@id': `${url}#webpage`,
+  name: title,
+  description,
+  url,
+  about: { '@id': `${SITE.url}/#practice` },
+};
+---
+
+<BaseLayout title={title} description={description} jsonLd={[webPage, breadcrumbs]}>
+  <section class="article-hero">
+    <div class="wrap">
+      <div class="eyebrow">Accessibility</div>
+      <h1>{title}</h1>
+    </div>
+  </section>
+
+  <article class="article-body">
+    <h2>Our commitment</h2>
+    <p>
+      I'm committed to making this website and counselling service as accessible as possible. If you encounter any barriers or have feedback, please get in touch. Your experience matters.
+    </p>
+
+    <h2>Requesting reasonable adjustments</h2>
+    <p>
+      If you need information in a different format, or would like to discuss how I can support you, you don't need to disclose a diagnosis or explain yourself in detail. Just get in touch and we'll work out what helps.
+    </p>
+    <p>
+      You can reach me:
+    </p>
+    <ul>
+      <li><a href="mailto:nick@tangata-counselling.co.uk">nick@tangata-counselling.co.uk</a></li>
+      <li><a href="tel:07988136267">07988 136267</a></li>
+    </ul>
+
+    <h2>Online counselling</h2>
+    <p>
+      I offer online counselling by video or phone, which may suit you better depending on your needs. Online sessions can remove barriers like transport, mobility, or sensory environment.
+    </p>
+
+    <h2>Physical access to the Fishponds room</h2>
+    <p>
+      <strong>Please note:</strong> The counselling room in Fishponds is up two flights of stairs and is not wheelchair accessible or step-free.
+    </p>
+    <p>
+      If this affects you, please contact me to discuss alternatives. Online counselling, or working with me in a different accessible location, may be possible depending on circumstances.
+    </p>
+
+    <h2>Website accessibility</h2>
+    <p>
+      This website aims to meet WCAG 2.2 level AA standards. It includes:
+    </p>
+    <ul>
+      <li>Keyboard navigation for all functions</li>
+      <li>Clear focus indicators</li>
+      <li>Descriptive alt text for images</li>
+      <li>Captions for videos</li>
+      <li>Readable text with sufficient contrast</li>
+      <li>Responsive design that works at any zoom level</li>
+      <li>Respect for reduced-motion preferences</li>
+    </ul>
+
+    <h2>Report an accessibility problem</h2>
+    <p>
+      If you find something on the website that doesn't work as expected, or if you have suggestions for improvement, please email me at <a href="mailto:nick@tangata-counselling.co.uk">nick@tangata-counselling.co.uk</a> with:
+    </p>
+    <ul>
+      <li>What you were trying to do</li>
+      <li>What went wrong or what made it difficult</li>
+      <li>Your browser or device if relevant</li>
+    </ul>
+    <p>
+      I'll look into it and get back to you.
+    </p>
+  </article>
+</BaseLayout>
