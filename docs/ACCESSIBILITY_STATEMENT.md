@@ -53,7 +53,7 @@ Tangata Counselling is committed to ensuring digital accessibility of our websit
 - Responsive design (tested at 320px, 768px, 1024px+ widths)
 
 ### Known Limitations & Workarounds
-- **YouTube embedded videos:** Captions depend on the video creator. Tangata Counselling embeds YouTube videos with captions enabled; contact us if a video lacks captions.
+- **Homepage YouTube video:** Nick has manually confirmed that captions are embedded in the original video. Contact us if you have trouble accessing them.
 - **Physical access (Fishponds location):** The counselling room requires climbing two flights of stairs and is not wheelchair accessible. Online counselling or alternative arrangements are available.
 - **Third-party embeds:** Any embedded third-party content (e.g., scheduling tools, external links) is beyond Tangata Counselling's direct control, though we select partners with accessibility in mind.
 

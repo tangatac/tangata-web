@@ -92,21 +92,37 @@ const graph = [...baseGraph(base.href.replace(/\/$/, '')), ...jsonLd];
     <meta name="twitter:image" content={ogImage} />
 
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
 
     <JsonLd schema={graph} />
   </head>
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <Nav />
-    <main id="main-content">
+    <main id="main-content" tabindex="-1">
       <slot />
     </main>
     <Footer />
+    <script>
+      document.addEventListener('click', (event) => {
+        const trigger = event.target.closest('.youtube-facade');
+        if (!trigger || trigger.dataset.loaded === 'true') return;
+
+        const id = trigger.dataset.videoId;
+        const title = trigger.dataset.videoTitle;
+        if (!id || !title) return;
+
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1`;
+        iframe.title = title;
+        iframe.loading = 'lazy';
+        iframe.setAttribute('frameborder', '0');
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+        iframe.tabIndex = 0;
+
+        trigger.replaceWith(iframe);
+        iframe.focus();
+      });
+    </script>
   </body>
 </html>

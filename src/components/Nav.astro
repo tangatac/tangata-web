@@ -1,6 +1,8 @@
 ---
 const path = Astro.url.pathname;
 const isBlog = path.startsWith('/blog');
+const isFees = path.startsWith('/fees');
+const isHome = path === '/';
 ---
 <header class="nav">
   <div class="wrap nav-inner">
@@ -8,13 +10,57 @@ const isBlog = path.startsWith('/blog');
       <img src="/images/tangata-blue-cropped.png" alt="Tangata Counselling logo" class="brand-logo" />
     </a>
     <nav class="links">
-      <a class:list={['nav-link', { active: path === '/' }]} href="/">Home</a>
-      <a class="nav-link" href="/#emdr">EMDR</a>
-      <a class="nav-link" href="/#howiwork">Counselling</a>
-      <a class="nav-link" href="/#about">About</a>
-      <a class:list={['nav-link', { active: isBlog }]} href="/blog/">Blog</a>
-      <a class:list={['nav-link', { active: path.startsWith('/fees') }]} href="/fees/">Fees</a>
+      <a class:list={['nav-link', { active: isHome }]} href="/" data-section="hero" aria-current={isHome ? 'location' : undefined}>Home</a>
+      <a class="nav-link" href="/#emdr" data-section="emdr">EMDR</a>
+      <a class="nav-link" href="/#howiwork" data-section="howiwork">Counselling</a>
+      <a class="nav-link" href="/#about" data-section="about">About</a>
+      <a class:list={['nav-link', { active: isBlog }]} href="/blog/" aria-current={isBlog ? 'page' : undefined}>Blog</a>
+      <a class:list={['nav-link', { active: isFees }]} href="/fees/" aria-current={isFees ? 'page' : undefined}>Fees</a>
       <a class="btn btn-primary" href="/#contact">Book a free chat</a>
     </nav>
   </div>
 </header>
+
+{isHome && (
+  <script>
+    const sectionLinks = [...document.querySelectorAll('[data-section]')];
+    const sections = [...document.querySelectorAll('main > section')];
+    const sectionEntries = new Map();
+    const namedSections = new Set(sectionLinks.map((link) => link.dataset.section));
+
+    const setCurrentSection = (currentId) => {
+      sectionLinks.forEach((link) => {
+        const isCurrent = link.dataset.section === currentId;
+        link.classList.toggle('active', isCurrent);
+        if (isCurrent) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => sectionEntries.set(entry.target, entry));
+        const visible = [...sectionEntries.values()]
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        const currentId = visible?.target.id || (visible?.target.classList.contains('hero') ? 'hero' : null);
+        setCurrentSection(namedSections.has(currentId) ? currentId : null);
+      },
+      { rootMargin: '-30% 0px -55% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    sectionLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        const targetId = link.dataset.section;
+        setCurrentSection(targetId);
+      });
+    });
+
+    window.addEventListener('hashchange', () => {
+      const targetId = window.location.hash.slice(1);
+      setCurrentSection(namedSections.has(targetId) ? targetId : null);
+    });
+  </script>
+)}

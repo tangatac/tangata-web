@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { formatDate } from '../lib/format.mjs';
 import { youTubeId } from '../lib/youtube.mjs';
 import { SITE } from '../lib/site.mjs';
+import YouTube from '../components/YouTube.astro';
 
 // ── Hero explainer video ──────────────────────────────────────────────
 // Paste a YouTube link between the quotes to show it in the hero.
@@ -77,16 +78,7 @@ const homeJsonLd = [
         </div>
       </div>
       {heroVideoId ? (
-        <div class="hero-media has-video">
-          <iframe
-            src={`https://www.youtube-nocookie.com/embed/${heroVideoId}`}
-            title="What EMDR is, in 90 seconds (YouTube video)"
-            loading="lazy"
-            frameborder="0"
-            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-        </div>
+        <div class="hero-media has-video"><YouTube url={heroVideo} title="What EMDR is, in 90 seconds (YouTube video)" poster="/images/video-posters/emdr-intro.webp" /></div>
       ) : (
         <div class="hero-media">
           <svg class="swirlbg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M50,10 A40,40 0 1 1 10,50 A30,30 0 1 1 50,20 A20,20 0 1 1 30,40" fill="none" stroke="#fff" stroke-width="3"/></svg>

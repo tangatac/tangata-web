@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { formatDate } from '../../lib/format.mjs';
 import { youTubeId } from '../../lib/youtube.mjs';
 import { SITE, absoluteUrl, breadcrumbSchema } from '../../lib/site.mjs';
+import YouTube from '../../components/YouTube.astro';
 
 export async function getStaticPaths() {
   const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
@@ -82,16 +83,7 @@ const breadcrumbs = breadcrumbSchema([
   <article class="article-body">
     {
       heroVideoId && (
-        <div class="video-embed">
-          <iframe
-            src={`https://www.youtube-nocookie.com/embed/${heroVideoId}`}
-            title={`Video: ${title} (YouTube)`}
-            loading="lazy"
-            frameborder="0"
-            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          />
-        </div>
+        <YouTube url={youtube} title={`Video: ${title} (YouTube)`} />
       )
     }
 

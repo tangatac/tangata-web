@@ -4,22 +4,21 @@ import { youTubeId } from '../lib/youtube.mjs';
 interface Props {
   url: string;
   title?: string;
+  poster?: string;
 }
 
-const { url, title = 'YouTube video player' } = Astro.props;
+const { url, title = 'YouTube video player', poster = '/og-default.png' } = Astro.props;
 const id = youTubeId(url);
 ---
 {
   id && (
-    <div class="video-embed">
-      <iframe
-        src={`https://www.youtube-nocookie.com/embed/${id}`}
-        title={title}
-        loading="lazy"
-        frameborder="0"
-        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-      />
+    <div class="video-embed youtube-shell">
+      <button class="youtube-facade" type="button" data-video-id={id} data-video-title={title} aria-label={`Play video: ${title}`}>
+        <img src={poster} alt="" class="youtube-poster" />
+        <span class="youtube-overlay" aria-hidden="true"></span>
+        <span class="youtube-play">Play video</span>
+        <span class="youtube-note">Playing this video loads content from YouTube.</span>
+      </button>
     </div>
   )
 }

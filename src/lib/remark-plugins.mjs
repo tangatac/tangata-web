@@ -54,9 +54,10 @@ export function remarkYouTube() {
 
 export function youTubeEmbed(id) {
   return (
-    `<div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/${id}" ` +
-    `title="YouTube video player (embedded)" loading="lazy" frameborder="0" ` +
-    `allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ` +
-    `allowfullscreen></iframe></div>`
+    `<div class="video-embed youtube-shell"><button class="youtube-facade" type="button" ` +
+    `data-video-id="${id}" data-video-title="YouTube video (embedded)" ` +
+    `aria-label="Play video: YouTube video (embedded)"><img src="/og-default.png" alt="" class="youtube-poster" />` +
+    `<span class="youtube-overlay" aria-hidden="true"></span><span class="youtube-play">Play video</span>` +
+    `<span class="youtube-note">Playing this video loads content from YouTube.</span></button></div>`
   );
 }
