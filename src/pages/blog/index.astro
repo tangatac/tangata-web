@@ -70,9 +70,15 @@ const breadcrumbs = breadcrumbSchema([
             {posts.map((post, i) => (
               <a class="post" href={`/blog/${post.id}/`}>
                 <div class:list={['thumb', thumbClass[i % 3]]}>
-                  <svg class="swirlbg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-                    <path d="M50,10 A40,40 0 1 1 10,50 A30,30 0 1 1 50,20" fill="none" stroke="#fff" stroke-width="3" />
-                  </svg>
+                  {
+                    post.data.image ? (
+                      <img src={post.data.image} alt="" loading="lazy" />
+                    ) : (
+                      <svg class="swirlbg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                        <path d="M50,10 A40,40 0 1 1 10,50 A30,30 0 1 1 50,20" fill="none" stroke="#fff" stroke-width="3" />
+                      </svg>
+                    )
+                  }
                 </div>
                 <div class="body">
                   <span class="chip">{post.data.category}</span>

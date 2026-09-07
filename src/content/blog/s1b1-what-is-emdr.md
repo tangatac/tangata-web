@@ -4,6 +4,12 @@ description: A plain-English introduction to EMDR therapy, how it works and the 
 date: 2026-09-01
 category: EMDR
 author: Nick Tuftnell
+image: /images/s1b1.webp
+imageAlt: A circular ripple spreading across a calm mountain lake beneath a cloudy sky.
+imageCredit:
+  photographer: Sabri Tuzcu
+  photographerUrl: https://unsplash.com/@sabrituzcu?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText
+  sourceUrl: https://unsplash.com/photos/landscape-of-a-lake-IIgijAYHv1w?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText
 draft: false
 ---
 

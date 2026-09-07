@@ -9,8 +9,9 @@ import YouTube from '../components/YouTube.astro';
 // ── Hero explainer video ──────────────────────────────────────────────
 // Paste a YouTube link between the quotes to show it in the hero.
 // Leave it empty ('') to show the placeholder box instead.
-const heroVideo = 'https://www.youtube.com/watch?v=0JWgzpBhrOk';
+const heroVideo = 'https://youtu.be/TY90eGxSI6E?si=bGjd9L4rc0wytgmI';
 const heroVideoId = youTubeId(heroVideo);
+const showTestimonials = false;
 
 // ── Latest blog posts (pulled automatically from src/content/blog) ─────
 const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
@@ -61,24 +62,27 @@ const homeJsonLd = [
     <div class="wrap hero-grid">
       <div>
         <div class="eyebrow">EMDR &amp; integrative counselling · Bristol</div>
-        <h1>Gently move past<br />what's <em>holding you back</em>.</h1>
+        <h1>EMDR therapy for what still feels stuck</h1>
         <p class="lede">
-          I'm Nick — a BACP-accredited counsellor and EMDR therapist in Bristol. I help people work
-          through trauma, anxiety, and the memories that keep pulling them back, at a pace that feels
-          safe.
+          I'm Nick, an EMDR therapist and BACP-accredited counsellor in Bristol, working online and
+          in person, with a strong focus on safety, trust and going at a pace that feels manageable —
+          helping you move past difficult experiences and find more freedom in how you feel, think and live.
         </p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="/#contact">Book a free 15-minute chat</a>
           <a class="btn btn-ghost" href="/#emdr">What is EMDR?</a>
         </div>
         <div class="trust-row">
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>BACP accredited</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>EMDR UK Member</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Registered MBACP (accred.)</span>
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>DBS checked</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Registered MBACP</span>
         </div>
       </div>
       {heroVideoId ? (
-        <div class="hero-media has-video"><YouTube url={heroVideo} title="What EMDR is, in 90 seconds (YouTube video)" poster="/images/video-posters/emdr-intro.webp" /></div>
+        <div>
+          <h2 class="hero-video-title">What is EMDR?</h2>
+          <div class="hero-media has-video"><YouTube url={heroVideo} title="What EMDR is, in 90 seconds (YouTube video)" poster="/images/video-posters/emdr-intro.webp" /></div>
+        </div>
       ) : (
         <div class="hero-media">
           <svg class="swirlbg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M50,10 A40,40 0 1 1 10,50 A30,30 0 1 1 50,20 A20,20 0 1 1 30,40" fill="none" stroke="#fff" stroke-width="3"/></svg>
@@ -100,6 +104,11 @@ const homeJsonLd = [
         <p>
           EMDR (Eye Movement Desensitisation and Reprocessing) is a recognised, evidence-based
           therapy. It can help with more than you might expect.
+        </p>
+        <p>
+          Sometimes everything can look fine from the outside while, inside, things feel very different.
+          You might be working, coping and getting through the day while underneath you feel overwhelmed,
+          on edge, disconnected or stuck. You don't have to be falling apart for therapy to be worthwhile.
         </p>
       </div>
       <div class="cards">
@@ -227,20 +236,24 @@ const homeJsonLd = [
     </div>
   </section>
 
-  <section class="band">
-    <div class="wrap">
-      <div class="sec-head">
-        <div class="eyebrow">In their words</div>
-        <h2>What working together can feel like</h2>
-      </div>
-      <div class="quotes">
-        <div class="quote"><p>&ldquo;For the first time I felt genuinely heard, and something that had weighed on me for years finally lifted.&rdquo;</p><div class="who">— example placement</div></div>
-        <div class="quote"><p>&ldquo;Nick made EMDR feel safe and completely unhurried. I never felt pushed.&rdquo;</p><div class="who">— example placement</div></div>
-        <div class="quote"><p>&ldquo;I came in sceptical and left with tools I still use every day.&rdquo;</p><div class="who">— example placement</div></div>
-      </div>
-      <p class="ph-note">Your own anonymised client feedback would appear here — with consent, and no identifying details.</p>
-    </div>
-  </section>
+  {
+    showTestimonials && (
+      <section class="band">
+        <div class="wrap">
+          <div class="sec-head">
+            <div class="eyebrow">In their words</div>
+            <h2>What working together can feel like</h2>
+          </div>
+          <div class="quotes">
+            <div class="quote"><p>&ldquo;For the first time I felt genuinely heard, and something that had weighed on me for years finally lifted.&rdquo;</p><div class="who">— example placement</div></div>
+            <div class="quote"><p>&ldquo;Nick made EMDR feel safe and completely unhurried. I never felt pushed.&rdquo;</p><div class="who">— example placement</div></div>
+            <div class="quote"><p>&ldquo;I came in sceptical and left with tools I still use every day.&rdquo;</p><div class="who">— example placement</div></div>
+          </div>
+          <p class="ph-note">Your own anonymised client feedback would appear here — with consent, and no identifying details.</p>
+        </div>
+      </section>
+    )
+  }
 
   <section class="band tint">
     <div class="wrap">
@@ -281,6 +294,7 @@ const homeJsonLd = [
         Or reach me directly:
         <a href="mailto:nick@tangata-counselling.co.uk">nick@tangata-counselling.co.uk</a> ·
         <a href="tel:07988136267">07988 136267</a>
+        <span style="display:block;">Text messages are welcome.</span>
       </div>
     </div>
   </section>

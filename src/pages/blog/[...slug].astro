@@ -23,7 +23,7 @@ export async function getStaticPaths() {
 
 const { post, newer, older } = Astro.props;
 const { Content, remarkPluginFrontmatter } = await render(post);
-const { title, description, date, updated, category, author, image, youtube } = post.data;
+const { title, description, date, updated, category, author, image, imageAlt, imageCredit, youtube } = post.data;
 const readTime = remarkPluginFrontmatter.minutesRead as string | undefined;
 const heroVideoId = youtube ? youTubeId(youtube) : null;
 
@@ -84,6 +84,21 @@ const breadcrumbs = breadcrumbSchema([
     {
       heroVideoId && (
         <YouTube url={youtube} title={`Video: ${title} (YouTube)`} />
+      )
+    }
+
+    {
+      image && (
+        <figure class="post-featured-figure">
+          <img class="post-featured-image" src={image} alt={imageAlt ?? `${title} featured image`} width="1024" height="1536" loading="lazy" />
+          {
+            imageCredit && (
+              <figcaption class="photo-credit">
+                Photo by <a href={imageCredit.photographerUrl}> {imageCredit.photographer}</a> on <a href={imageCredit.sourceUrl}>Unsplash</a>
+              </figcaption>
+            )
+          }
+        </figure>
       )
     }
 
