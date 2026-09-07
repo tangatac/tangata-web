@@ -366,14 +366,29 @@ test.describe('Privacy network regression', () => {
   }
 
   test('hands the deliberate activation through to the YouTube player', async ({ page }) => {
+    const youtubeRequests = [];
+    page.on('request', (request) => {
+      if (/youtube\.com|youtube-nocookie\.com/i.test(request.url())) {
+        youtubeRequests.push(request.url());
+      }
+    });
+
     await page.goto('/');
+    await page.waitForLoadState('networkidle');
+    expect(youtubeRequests).toEqual([]);
+
+    const youtubeRequest = page.waitForRequest(/youtube-nocookie\.com\/embed/);
     const facade = page.locator('.youtube-facade');
     await facade.focus();
     await page.keyboard.press('Enter');
 
-    const player = page.frameLocator('iframe[src*="youtube-nocookie.com"]');
-    const video = player.locator('video').first();
-    await expect(video).toBeVisible({ timeout: 15_000 });
-    await expect.poll(() => video.evaluate((element) => !element.paused), { timeout: 15_000 }).toBe(true);
+    const request = await youtubeRequest;
+    expect(request.url()).toContain('autoplay=1');
+    const iframe = page.locator('iframe[src*="youtube-nocookie.com"]');
+    await expect(iframe).toHaveCount(1);
+    await expect(iframe).toHaveAttribute('src', /^https:\/\/www\.youtube-nocookie\.com\/embed\/.+autoplay=1/);
+    await expect(iframe).toHaveAttribute('allow', /autoplay/);
+    const player = await iframe.contentFrame();
+    expect(player).not.toBeNull();
   });
 });

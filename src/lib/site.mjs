@@ -45,8 +45,8 @@ export const SOCIAL_LINKS = [
   { label: 'YouTube', href: 'https://www.youtube.com/@tangata_counselling' },
   // TikTok handle is temporary — Nick plans to move to @tangata_counselling once the rename is allowed (~mid Sept 2026).
   { label: 'TikTok', href: 'https://www.tiktok.com/@nicktemdr' },
-  { label: 'Facebook', href: '#' },
-  { label: 'LinkedIn', href: '#' },
+  { label: 'Facebook', href: 'https://www.facebook.com/TangataCounselling' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/nick-tuftnell-6398431' },
 ];
 
 /** Real (non-placeholder) social URLs, for structured-data `sameAs`. */

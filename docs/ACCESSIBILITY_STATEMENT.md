@@ -75,7 +75,7 @@ Tangata Counselling is committed to ensuring digital accessibility of our websit
 - Images have concise alt text describing content or function
 - Decorative images are marked as such (aria-hidden or alt="")
 - YouTube videos use youtube-nocookie embed with descriptive titles
-- No autoplay; users control when media plays
+- Videos do not autoplay on page load; playback begins only after the visitor deliberately selects Play.
 
 ### Motion & Animation
 - Animations respect user's `prefers-reduced-motion` setting
