@@ -4,7 +4,7 @@ description: "How EMDR prioritises safety, grounding and preparation when workin
 date: 2026-09-02
 category: EMDR
 author: Nick Tuftnell
-draft: false
+draft: true
 ---
 
 When people hear about EMDR, one of the first questions they often ask me is: **“Is it safe?”**

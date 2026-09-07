@@ -4,7 +4,7 @@ description: "A step-by-step explanation of what happens during EMDR processing,
 date: 2026-09-02
 category: EMDR
 author: Nick Tuftnell
-draft: false
+draft: true
 ---
 
 If you’ve seen EMDR online, you’ve probably seen the bit everyone recognises: someone sitting opposite a therapist, following their fingers from side to side.

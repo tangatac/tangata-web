@@ -4,7 +4,7 @@ description: A short walkthrough for adding your own posts — this page is also
 date: 2026-08-29
 category: Guide
 author: Nick Tuftnell
-draft: false
+draft: true
 ---
 
 This post is a demo. It explains, step by step, how to add a new article to the

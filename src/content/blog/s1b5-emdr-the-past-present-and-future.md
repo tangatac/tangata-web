@@ -4,7 +4,7 @@ description: "How EMDR works with past experiences, present-day triggers and fut
 date: 2026-09-02
 category: EMDR
 author: Nick Tuftnell
-draft: false
+draft: true
 ---
 
 When people hear that EMDR is used to process difficult or traumatic experiences, it’s easy to imagine that the therapy is simply about going back into the past and dealing with what happened.

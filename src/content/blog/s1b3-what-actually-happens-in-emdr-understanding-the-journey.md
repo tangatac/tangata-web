@@ -4,7 +4,7 @@ description: "A plain-English guide to the EMDR journey, from initial conversati
 date: 2026-09-02
 category: EMDR
 author: Nick Tuftnell
-draft: false
+draft: true
 ---
 
 If you’ve heard of EMDR, you might have an image in your head of someone sitting in a therapy room, moving their eyes from side to side while thinking about something traumatic.
