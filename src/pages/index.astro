@@ -65,8 +65,8 @@ const homeJsonLd = [
         <h1>EMDR therapy for what still feels stuck</h1>
         <p class="lede">
           I'm Nick, an EMDR therapist and BACP-accredited counsellor in Bristol, working online and
-          in person, with a strong focus on safety, trust and going at a pace that feels manageable —
-          helping you move past difficult experiences and find more freedom in how you feel, think and live.
+          in person, with a strong focus on safety, trust and going at a pace that feels manageable.
+          I help you move past difficult experiences and find more freedom in how you feel, think and live.
         </p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="/#contact">Book a free 15-minute chat</a>
@@ -288,7 +288,13 @@ const homeJsonLd = [
         {recentPosts.map((post, i) => (
           <a class="post" href={`/blog/${post.id}/`}>
             <div class:list={['thumb', thumbClass[i % 3]]}>
-              <svg class="swirlbg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M50,10 A40,40 0 1 1 10,50 A30,30 0 1 1 50,20" fill="none" stroke="#fff" stroke-width="3"/></svg>
+              {
+                post.data.image ? (
+                  <img src={post.data.image} alt="" loading="lazy" />
+                ) : (
+                  <svg class="swirlbg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M50,10 A40,40 0 1 1 10,50 A30,30 0 1 1 50,20" fill="none" stroke="#fff" stroke-width="3"/></svg>
+                )
+              }
             </div>
             <div class="body">
               <span class="chip">{post.data.category}</span>
@@ -318,6 +324,10 @@ const homeJsonLd = [
         <a href="mailto:nick@tangata-counselling.co.uk">nick@tangata-counselling.co.uk</a> ·
         <a href="tel:07988136267">07988 136267</a>
         <span style="display:block;">Text messages are welcome.</span>
+      </div>
+      <div class="contact-reassurance">
+        <h3>What happens next?</h3>
+        <p>You don't need to tell me your whole story or get the first message 'right' — a few words to say you'd like to talk is enough. I'll reply and we can take it from there.</p>
       </div>
     </div>
   </section>

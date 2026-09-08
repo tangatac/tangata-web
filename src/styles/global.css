@@ -161,6 +161,9 @@ section.band.tint{background:var(--pale);}
 .ctaband p{color:#bcdae1;max-width:34em;margin:0 auto 24px;font-size:1.08rem;}
 .ctaband .btn-primary{background:var(--sun);color:#3a2410;}
 .ctaband .btn-primary:hover{background:#e7b06a;}
+.contact-reassurance{max-width:34em;margin:24px auto 0;}
+.contact-reassurance h3{font-family:var(--fdisp);font-weight:600;font-size:1.15rem;color:#fff;margin-bottom:4px;}
+.contact-reassurance p{margin:0;font-size:.95rem;}
 .ctaband .contact-line{margin-top:18px;font-size:.95rem;color:#bcdae1;}
 .ctaband .contact-line a{color:#fff;font-weight:700;}
 
