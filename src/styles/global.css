@@ -122,6 +122,8 @@ section.band.tint{background:var(--pale);}
 .loc h3{font-family:var(--fdisp);font-weight:600;color:var(--deep);font-size:1.25rem;margin-bottom:6px;}
 .loc .pin{color:var(--teal);font-weight:700;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:10px;}
 .loc p{color:var(--muted);font-size:.95rem;}
+.loc address{margin-top:14px;font-style:normal;color:var(--muted);font-size:.95rem;line-height:1.5;}
+.location-map-link{display:inline-block;margin-top:10px;font-weight:700;text-decoration:underline;text-underline-offset:3px;}
 .loc-room{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,420px);gap:26px;align-items:center;}
 .room-image-link{display:block;}
 .room-image-link img{width:100%;height:auto;border-radius:8px;box-shadow:var(--shadow);}
