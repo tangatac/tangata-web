@@ -16,3 +16,5 @@ _copilot-input/
 .DS_Store
 # logs
 npm-debug.log*
+local-context/
+

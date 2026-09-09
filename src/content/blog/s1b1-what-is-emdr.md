@@ -142,4 +142,4 @@ You do not need to arrive knowing exactly what is wrong, where it came from or w
 
 That is something we can begin to work out together.
 
-If you are interested in [finding out more about EMDR](/#emdr) or would like to discuss whether it might be helpful for you, please get in touch with **Tangata Counselling**.
+If you are interested in [finding out more about EMDR](/emdr/) or would like to discuss whether it might be helpful for you, please get in touch with **Tangata Counselling**.

@@ -2,6 +2,7 @@
 const path = Astro.url.pathname;
 const isBlog = path.startsWith('/blog');
 const isFees = path.startsWith('/fees');
+const isEmdr = path.startsWith('/emdr');
 const isHome = path === '/';
 ---
 <header class="nav">
@@ -11,7 +12,7 @@ const isHome = path === '/';
     </a>
     <nav class="links">
       <a class:list={['nav-link', { active: isHome }]} href="/" data-section="hero" aria-current={isHome ? 'location' : undefined}>Home</a>
-      <a class="nav-link" href="/#emdr" data-section="emdr">EMDR</a>
+      <a class:list={['nav-link', { active: isEmdr }]} href="/emdr/" data-section="emdr" aria-current={isEmdr ? (path === '/emdr/' ? 'page' : 'location') : undefined}>EMDR</a>
       <a class="nav-link" href="/#howiwork" data-section="howiwork">Counselling</a>
       <a class="nav-link" href="/#about" data-section="about">About</a>
       <a class:list={['nav-link', { active: isBlog }]} href="/blog/" aria-current={isBlog ? 'page' : undefined}>Blog</a>

@@ -1,0 +1,186 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import YouTube from '../../components/YouTube.astro';
+import { SITE, absoluteUrl, breadcrumbSchema } from '../../lib/site.mjs';
+
+const title = 'EMDR therapy in Bristol, in person and online';
+const description =
+  'EMDR therapy with Nick Tuftnell, a BACP-accredited counsellor and EMDR therapist in Bristol. In-person sessions in Fishponds and online, with a focus on safety, trust and working at a manageable pace.';
+const url = absoluteUrl('/emdr/');
+const breadcrumbs = breadcrumbSchema([
+  { name: 'Home', path: '/' },
+  { name: 'EMDR', path: '/emdr/' },
+]);
+const service = {
+  '@type': 'Service',
+  '@id': `${url}#service`,
+  name: 'EMDR therapy',
+  serviceType: 'EMDR therapy',
+  provider: { '@id': `${SITE.url}/#practice` },
+  areaServed: SITE.areaServed.map((name) => ({ '@type': 'Place', name })),
+  url,
+};
+---
+<BaseLayout title={title} metaTitle="EMDR Therapy in Bristol — Tangata Counselling" description={description} jsonLd={[service, breadcrumbs]}>
+  <section class="article-hero">
+    <div class="wrap">
+      <div class="eyebrow accent-warm">EMDR therapy in Bristol</div>
+      <h1>{title}</h1>
+      <p style="color:var(--muted);max-width:42em;margin-top:12px;">
+        EMDR can help when difficult experiences still feel present — even when you understand them logically, or life looks fine from the outside.
+      </p>
+      <p style="color:var(--muted);max-width:42em;margin-top:12px;">
+        I offer EMDR therapy in Bristol and online, with a strong focus on safety, trust and working at a pace that feels manageable. We don’t have to rush into processing, and you don’t need to have everything worked out before you begin.
+      </p>
+      <div class="hero-cta" style="margin-top:24px;">
+        <a class="btn btn-primary" href="/#contact">Book a free 15-minute chat</a>
+        <a class="btn btn-ghost" href="/blog/s1b1-what-is-emdr/">What is EMDR?</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow accent-warm">Could EMDR help me?</div>
+        <h2>When something still feels present</h2>
+      </div>
+      <div class="article-body emdr-copy">
+        <p>Sometimes something has happened in the past, but part of you still reacts as though it is happening now.</p>
+        <p>You might become overwhelmed, anxious, shut down or on edge. Certain situations may trigger a much bigger reaction than you expect. You might avoid things, replay events in your mind, struggle with memories, or feel stuck with beliefs about yourself that are hard to shift.</p>
+        <p>Sometimes there is an obvious traumatic event behind this. Sometimes there isn’t.</p>
+        <p>You don’t have to be falling apart for therapy to be worthwhile. EMDR can be useful when something continues to affect how you feel, think, behave or relate to other people, even when another part of you knows you are safe now.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow accent-warm">What EMDR can help with</div>
+        <h2>People come to EMDR for many different reasons</h2>
+      </div>
+      <div class="cards">
+        <a class="card" href="/emdr/trauma-and-ptsd/"><h3>Trauma and PTSD</h3><p>When an experience still feels vivid, threatening or difficult to leave in the past.</p><span class="more">Learn more →</span></a>
+        <a class="card" href="/emdr/anxiety/"><h3>Anxiety</h3><p>When anxiety seems linked to earlier experiences, particular situations or deeply learned expectations.</p><span class="more">Learn more →</span></a>
+        <a class="card" href="/emdr/phobias/"><h3>Phobias</h3><p>When fear feels automatic, intense or out of proportion to the situation you are in now.</p><span class="more">Learn more →</span></a>
+        <a class="card" href="/emdr/grief-and-loss/"><h3>Grief and loss</h3><p>When particular moments, images or experiences around a loss feel stuck or especially difficult to process.</p><span class="more">Learn more →</span></a>
+        <a class="card" href="/emdr/low-self-esteem/"><h3>Low self-esteem</h3><p>When criticism, rejection, bullying or difficult relationships have shaped how you see yourself.</p><span class="more">Learn more →</span></a>
+        <a class="card" href="/emdr/could-emdr-help/"><h3>Could EMDR help with something else?</h3><p>Not every difficulty fits neatly into a category. We can think together about whether EMDR might be useful for what you are experiencing.</p><span class="more">Explore this question →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow accent-warm">How I work with EMDR</div>
+        <h2>A collaborative process, at a pace that feels manageable</h2>
+      </div>
+      <div class="article-body emdr-copy">
+        <p>I don’t see EMDR as something that is simply “done to” you.</p>
+        <p>The work is collaborative. We spend time understanding what is happening, what feels manageable and what you need in order to feel safe enough to work.</p>
+        <p>For some people, processing can begin fairly quickly. For others, preparation needs more time. Sometimes counselling and EMDR sit alongside each other, and sometimes another approach makes more sense for a while.</p>
+        <p>You remain involved in those decisions throughout. If something feels too much, confusing or simply not right, we can slow down, pause or change direction.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow accent-warm">What happens in an EMDR session?</div>
+        <h2>EMDR is more than eye movements</h2>
+      </div>
+      <div class="article-body emdr-copy">
+        <p>Before processing difficult experiences, we build an understanding of what is happening for you, what you would like to change and what helps you manage strong emotions.</p>
+        <p>When we work with a particular memory or experience, I’ll help you notice what comes up while using a form of bilateral stimulation — often eye movements, but sometimes tapping or another left-right rhythm.</p>
+        <p>You don’t need to force anything or work out the “right” response. We regularly check what is changing and make sure there is enough time to finish the session feeling sufficiently settled and grounded.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap split">
+      <div class="article-body emdr-copy">
+        <div class="eyebrow accent-warm">You don’t have to tell me everything</div>
+        <h2>You remain in control of what you choose to share</h2>
+        <p>One concern people sometimes have is that they will need to describe every detail of what happened.</p>
+        <p>You don’t.</p>
+        <p>I need enough understanding for us to work safely and make sense of what we are doing together, but you remain in control of what you choose to share.</p>
+        <p>For some people, that makes EMDR feel more manageable than the idea of talking through an experience repeatedly in detail.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow accent-warm">EMDR therapy in Bristol or online</div>
+        <h2>Choose the setting that feels practical for you</h2>
+      </div>
+      <div class="locs">
+        <div class="loc loc-room">
+          <div>
+            <h3>Tangata Counselling</h3>
+            <address>11 Everest Avenue<br />Fishponds<br />Bristol<br />BS16 2BY</address>
+            <p>Online sessions are also available. We can talk about which option feels more comfortable and practical for you.</p>
+            <a class="location-map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Tangata+Counselling&amp;query_place_id=ChIJD9KtsoSPcUgR1TjjmfeHTK8" target="_blank" rel="noopener">Find me on Google Maps</a>
+          </div>
+          <a class="room-image-link" href="/images/room.webp" target="_blank" rel="noopener" aria-label="View a larger image of Nick's counselling room in Bristol">
+            <img src="/images/room.webp" alt="Nick's counselling room in Bristol with two teal chairs, roof windows, plants and a calm, welcoming atmosphere." width="1600" height="720" loading="lazy" />
+          </a>
+        </div>
+      </div>
+      <div class="article-body emdr-copy">
+        <p>My counselling room is upstairs and is not step-free. If accessibility is an issue, please let me know and we can consider reasonable alternatives, including working online.</p>
+        <p><a href="/accessibility/">Accessibility information</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow accent-warm">Is EMDR right for me?</div>
+        <h2>We can work that out together</h2>
+      </div>
+      <div class="article-body emdr-copy">
+        <p>EMDR can be very helpful, but it isn’t automatically the right approach for everyone or every difficulty.</p>
+        <p>Sometimes it makes sense to begin with counselling. Sometimes more preparation is needed before processing difficult experiences. And sometimes we may decide that another approach would suit you better.</p>
+        <p>You don’t need to work that out on your own. Part of our first conversation is simply understanding what is happening, what you would like to change and whether the way I work feels like a good fit.</p>
+        <p><a href="/emdr/could-emdr-help/">Could EMDR help me?</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tint">
+    <div class="wrap split">
+      <div>
+        <div class="eyebrow accent-warm">Want to understand EMDR in more detail?</div>
+        <h2>Learn more before you decide</h2>
+        <p>If you would like to know more about what EMDR is and how it works:</p>
+        <p><a class="btn btn-ghost" href="/blog/s1b1-what-is-emdr/">Read: What Is EMDR?</a></p>
+      </div>
+      <div>
+        <YouTube url="https://youtu.be/TY90eGxSI6E?si=bGjd9L4rc0wytgmI" title="What EMDR is, in 90 seconds (YouTube video)" poster="/images/video-posters/emdr-intro.webp" />
+        <p style="margin-top:12px;"><strong>Watch: What is EMDR?</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="article-cta">
+        <div class="eyebrow accent-warm">Fees and getting started</div>
+        <h2>Start with a conversation</h2>
+        <p>Sessions start from <strong>£72 for 60 minutes</strong>, with longer sessions also available.</p>
+        <p><a class="btn btn-ghost" href="/fees/">View fees and practical information</a></p>
+        <p>If you are wondering whether EMDR might help, you are welcome to book a free 15-minute chat.</p>
+        <p>You don’t need to tell me your whole story or get the first message “right” — a few words to say you’d like to talk is enough. I’ll reply and we can take it from there.</p>
+        <p><a class="btn btn-primary" href="/#contact">Book a free 15-minute chat</a></p>
+        <p class="contact-line">Or reach me directly:<br /><a href="mailto:nick@tangata-counselling.co.uk">nick@tangata-counselling.co.uk</a><br /><a href="tel:07988136267">07988 136267</a><br />Text messages are welcome.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
