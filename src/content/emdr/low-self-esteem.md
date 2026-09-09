@@ -81,4 +81,4 @@ You do not need to know exactly where your self-doubt began. We can start with h
 
 If you are tired of understanding your inner critic without being able to quieten it, you are welcome to get in touch.
 
-[**Book a free, no-obligation 15-minute chat with Tangata Counselling.**](/#contact)
+[**Get in touch with Tangata Counselling.**](/#contact)

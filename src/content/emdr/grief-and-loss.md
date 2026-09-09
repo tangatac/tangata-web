@@ -79,4 +79,4 @@ You may be struggling with a recent loss, or something that happened a long time
 
 We can begin by talking about what has happened and what life is like for you now. Together, we can consider whether EMDR, counselling or a combination of the two would be most helpful.
 
-[**Book a free, no-obligation 15-minute chat with Tangata Counselling.**](/#contact)
+[**Get in touch with Tangata Counselling.**](/#contact)

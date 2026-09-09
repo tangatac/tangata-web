@@ -82,4 +82,4 @@ You do not need to diagnose yourself or be certain that your problem is serious 
 
 Together, we can consider whether EMDR, integrative counselling or another form of support might be the most appropriate next step.
 
-[**Book a free, no-obligation 15-minute chat with Tangata Counselling.**](/#contact)
+[**Get in touch with Tangata Counselling.**](/#contact)

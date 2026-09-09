@@ -85,4 +85,4 @@ You do not need to work that out by yourself.
 
 If a difficult experience still feels present in your life, we can begin with a conversation about what is happening and what you would like to change. You can then decide, without pressure, whether working together feels right.
 
-[**Book a free, no-obligation 15-minute chat with Tangata Counselling.**](/#contact)
+[**Get in touch with Tangata Counselling.**](/#contact)

@@ -81,4 +81,4 @@ EMDR may be useful when anxiety is linked to distressing memories, learnt fears 
 
 You do not need to know the answer before contacting me. If anxiety is narrowing your life or leaving you feeling constantly on alert, we can talk about what is happening and consider the options together.
 
-[**Book a free, no-obligation 15-minute chat with Tangata Counselling.**](/#contact)
+[**Get in touch with Tangata Counselling.**](/#contact)

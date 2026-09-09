@@ -75,4 +75,4 @@ EMDR can be helpful for some people with specific fears, particularly where a di
 
 We can talk about what you avoid, what happens when the fear is triggered, and what you would like to be able to do. From there, we can consider whether EMDR, counselling or another approach would be most appropriate.
 
-[**Book a free, no-obligation 15-minute chat with Tangata Counselling.**](/#contact)
+[**Get in touch with Tangata Counselling.**](/#contact)
