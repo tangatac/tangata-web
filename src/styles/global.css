@@ -3,6 +3,7 @@
   --mist:#e6f0f2; --pale:#f2f8f9; --ink:#173a43; --muted:#4f6b72;
   --line:#dce8ea; --sun:#d99f56; --white:#fff; --cream:#f7f4ee;
   --brand-blue:#375B77;
+  --terracotta:#C96B4B; --terracotta-dark:#A6543D;
   --fdisp:'Fraunces',Georgia,serif; --fbody:'Nunito Sans',system-ui,sans-serif;
   --shadow:0 6px 24px rgba(18,63,74,.08); --shadow-lg:0 18px 50px rgba(18,63,74,.14);
   --r:14px;
@@ -25,10 +26,10 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);bac
 .brand-text small{display:block;font-family:var(--fbody);font-weight:600;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--teal2);margin-top:4px;}
 nav.links{display:flex;align-items:center;gap:24px;}
 .nav-link{font-weight:600;font-size:.95rem;color:var(--ink);cursor:pointer;padding:4px 0;border-bottom:2px solid transparent;}
-.nav-link:hover,.nav-link.active{color:var(--teal);border-bottom-color:var(--sun);}
+.nav-link:hover,.nav-link.active{color:var(--teal);border-bottom-color:var(--terracotta);}
 .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--fbody);font-weight:700;font-size:.95rem;border-radius:30px;padding:11px 22px;cursor:pointer;border:none;transition:.2s;text-align:center;}
-.btn-primary{background:var(--brand-blue);color:#fff;}
-.btn-primary:hover{background:var(--deep);}
+.btn-primary{background:var(--terracotta-dark);color:#fff;}
+.btn-primary:hover{background:#8a4433;}
 .btn-ghost{background:transparent;color:var(--teal);border:1.5px solid var(--sky);}
 .btn-ghost:hover{background:var(--pale);}
 .nav .btn{padding:9px 18px;}
@@ -39,6 +40,7 @@ nav.links{display:flex;align-items:center;gap:24px;}
 .hero::after{content:'';position:absolute;right:-140px;top:-120px;width:420px;height:420px;background:radial-gradient(circle,rgba(111,179,196,.28),transparent 70%);pointer-events:none;}
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center;padding:70px 26px 76px;}
 .eyebrow{font-weight:700;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal2);margin-bottom:16px;}
+.eyebrow.accent-warm{color:var(--terracotta-dark);}
 .hero h1{font-family:var(--fdisp);font-weight:600;font-size:clamp(2.1rem,4.4vw,3.25rem);line-height:1.08;color:var(--deep);letter-spacing:-0.01em;margin-bottom:18px;}
 .hero h1 em{font-style:italic;color:var(--teal);}
 .hero p.lede{font-size:1.12rem;color:var(--ink);max-width:30em;margin-bottom:26px;}
@@ -159,8 +161,8 @@ section.band.tint{background:var(--pale);}
 .ctaband::after{content:'';position:absolute;left:-100px;bottom:-120px;width:360px;height:360px;background:radial-gradient(circle,rgba(111,179,196,.25),transparent 70%);}
 .ctaband h2{font-family:var(--fdisp);font-weight:600;font-size:clamp(1.7rem,3vw,2.3rem);color:#fff;margin-bottom:12px;}
 .ctaband p{color:#bcdae1;max-width:34em;margin:0 auto 24px;font-size:1.08rem;}
-.ctaband .btn-primary{background:var(--sun);color:#3a2410;}
-.ctaband .btn-primary:hover{background:#e7b06a;}
+.ctaband .btn-primary{box-shadow:inset 0 0 0 2px rgba(255,255,255,.85);}
+.ctaband .btn-primary:hover{box-shadow:inset 0 0 0 2px rgba(255,255,255,.85);}
 .contact-reassurance{max-width:34em;margin:24px auto 0;}
 .contact-reassurance h3{font-family:var(--fdisp);font-weight:600;font-size:1.15rem;color:#fff;margin-bottom:4px;}
 .contact-reassurance p{margin:0;font-size:.95rem;}

@@ -93,8 +93,8 @@ EMDR is perhaps best known for its use with post-traumatic stress, but it can al
 
 Depending on the individual and the experiences involved, this may include:
 
-- the effects of a single traumatic event
-- anxiety
+- the effects of a [single traumatic event](/emdr/trauma-and-ptsd/)
+- [anxiety](/emdr/anxiety/)
 - phobias
 - difficult or distressing memories
 - low self-esteem
@@ -132,7 +132,9 @@ That is difficult to answer without knowing something about you and what you are
 
 EMDR can be a very effective therapy, but it is not a magic solution and it is not necessarily the right approach for every person or every difficulty.
 
-The best place to start is usually with a conversation.
+The best place to start is usually with a [conversation](/#contact).
+
+You can also find practical information about [session fees](/fees/) before deciding whether to get in touch.
 
 We can talk about what is happening for you, what you would like to change and whether EMDR might be an appropriate approach. Sometimes another form of therapy may be more suitable. In some cases, different approaches may be used together.
 
@@ -140,4 +142,4 @@ You do not need to arrive knowing exactly what is wrong, where it came from or w
 
 That is something we can begin to work out together.
 
-If you are interested in finding out more about EMDR or would like to discuss whether it might be helpful for you, please get in touch with **Tangata Counselling**.
+If you are interested in [finding out more about EMDR](/#emdr) or would like to discuss whether it might be helpful for you, please get in touch with **Tangata Counselling**.

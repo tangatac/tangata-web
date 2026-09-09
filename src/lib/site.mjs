@@ -16,7 +16,7 @@ export const SITE = {
     'BACP-accredited EMDR therapy and integrative counselling in Bristol. A safe, confidential space to be heard.',
   locale: 'en_GB',
   email: 'nick@tangata-counselling.co.uk',
-  telephone: '+44 7988 136267',
+  telephone: '07988 136267',
   // Shown in the browser tab / as the site logo in structured data.
   logo: '/favicon.svg',
   // 1200x630 image used when a page is shared on social media, unless a page
@@ -28,9 +28,10 @@ export const SITE = {
     knowsAbout: ['EMDR therapy', 'Trauma and PTSD', 'Anxiety', 'Grief and bereavement', 'Integrative counselling'],
   },
   address: {
+    streetAddress: '11 Everest Avenue',
     locality: 'Bristol',
     region: 'Bristol',
-    postalCode: 'BS16',
+    postalCode: 'BS16 2BY',
     country: 'GB',
   },
   areaServed: ['Bristol', 'Fishponds'],
@@ -70,8 +71,10 @@ export function organizationSchema(base = SITE.url) {
     image: absoluteUrl(SITE.ogImage, base),
     logo: absoluteUrl(SITE.logo, base),
     priceRange: SITE.priceRange,
+    hasMap: 'https://www.google.com/maps/search/?api=1&query=Tangata+Counselling&query_place_id=ChIJD9KtsoSPcUgR1TjjmfeHTK8',
     address: {
       '@type': 'PostalAddress',
+      streetAddress: SITE.address.streetAddress,
       addressLocality: SITE.address.locality,
       addressRegion: SITE.address.region,
       postalCode: SITE.address.postalCode,
