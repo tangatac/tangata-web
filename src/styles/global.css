@@ -251,6 +251,23 @@ footer a:hover{color:#fff;}
 .youtube-facade:focus-visible{outline:3px solid var(--sun);outline-offset:-5px;}
 .hero-media.has-video .video-embed{height:100%;padding-bottom:0;margin:0;border-radius:0;box-shadow:none;}
 
+/* analytics consent banner */
+.consent-banner{position:fixed;bottom:0;left:0;right:0;z-index:1000;background:var(--deep);color:#eaf5f7;border-top:2px solid var(--sky);padding:18px 0;box-shadow:0 -4px 20px rgba(0,0,0,.18);}
+.consent-banner[hidden]{display:none!important;}
+.consent-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.consent-text{flex:1 1 500px;}
+.consent-title{font-family:var(--fdisp);font-weight:600;font-size:1.15rem;color:#fff;margin-bottom:4px;}
+.consent-text p{font-size:.95rem;line-height:1.5;color:#d8e5ed;margin:0;}
+.consent-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
+.btn-consent{font-family:var(--fbody);font-weight:700;font-size:.95rem;border-radius:30px;padding:10px 22px;cursor:pointer;border:2px solid transparent;transition:all .2s ease;text-align:center;}
+.btn-consent-allow{background:var(--terracotta-dark);color:#fff;border-color:var(--terracotta-dark);}
+.btn-consent-allow:hover{background:#8a4433;border-color:#8a4433;}
+.btn-consent-decline{background:transparent;color:#fff;border-color:#fff;}
+.btn-consent-decline:hover{background:rgba(255,255,255,.15);}
+.btn-consent:focus-visible,.foot-cookie-btn:focus-visible,.cookie-settings-link:focus-visible{outline:3px solid var(--sun)!important;outline-offset:2px!important;}
+.foot-cookie-btn,.cookie-settings-link{background:none;border:none;color:inherit;font-family:inherit;font-size:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:2px;padding:0;}
+.foot-cookie-btn:hover,.foot-cookie-btn:focus-visible,.cookie-settings-link:hover,.cookie-settings-link:focus-visible{color:#fff;}
+
 :focus-visible{outline:3px solid var(--sky);outline-offset:2px;}
 /* Skip to main content link */
 .skip-link{position:absolute;left:-9999px;top:-9999px;z-index:9999;padding:8px 16px;background:var(--deep);color:#fff;text-decoration:underline;border-radius:4px;}

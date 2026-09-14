@@ -58,6 +58,18 @@ export default defineConfig({
       use: { ...devices['iPhone 12'] },
     },
 
+    {
+      name: 'analytics',
+      testMatch: '**/analytics.spec.js',
+      use: {
+        ...devices['Desktop Chrome'],
+        baseURL: 'https://tangata-counselling.co.uk:3000',
+        launchOptions: {
+          args: ['--host-resolver-rules=MAP tangata-counselling.co.uk 127.0.0.1'],
+        },
+      },
+    },
+
     /* Test against branded browsers. */
     // {
     //   name: 'Microsoft Edge',
@@ -71,8 +83,11 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'npx astro dev --host 127.0.0.1 --port 3000',
+    command: 'npm run build && npx astro preview --host 127.0.0.1 --port 3000',
     url: 'http://127.0.0.1:3000/',
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: false,
+    env: {
+      HOST: '127.0.0.1',
+    },
   },
 });

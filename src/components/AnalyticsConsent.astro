@@ -1,0 +1,260 @@
+---
+---
+<div id="analytics-consent-banner" class="consent-banner" role="region" aria-label="Analytics consent" hidden>
+  <div class="wrap consent-inner">
+    <div class="consent-text">
+      <p class="consent-title">Optional analytics</p>
+      <p>I use optional Google Analytics to understand which routes bring people to the website and whether visitors use contact links. This helps me understand which kinds of outreach are useful.</p>
+    </div>
+    <div class="consent-actions">
+      <button type="button" id="consent-allow-btn" class="btn-consent btn-consent-allow">Allow analytics</button>
+      <button type="button" id="consent-decline-btn" class="btn-consent btn-consent-decline">Decline</button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+(function () {
+  const GA_MEASUREMENT_ID = 'G-9HSR1KNKWG';
+  const COOKIE_NAME = 'tangata_consent';
+  const PROD_HOSTNAME = 'tangata-counselling.co.uk';
+
+  function getConsentCookie() {
+    const match = document.cookie.match(/(?:^|; )tangata_consent=([^;]*)/);
+    return match ? decodeURIComponent(match[1]) : null;
+  }
+
+  function setConsentCookie(value) {
+    const maxAge = 15552000;
+    document.cookie = `${COOKIE_NAME}=${encodeURIComponent(value)}; Path=/; SameSite=Lax; Max-Age=${maxAge}; Secure`;
+  }
+
+  function deleteGACookies() {
+    const hostname = window.location.hostname;
+    const cookies = document.cookie.split(';');
+    const domainsToClear = [
+      '',
+      hostname,
+      '.' + hostname,
+      'tangata-counselling.co.uk',
+      '.tangata-counselling.co.uk'
+    ];
+    const uniqueDomains = Array.from(new Set(domainsToClear));
+
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      const eqPos = cookie.indexOf('=');
+      const name = eqPos > -1 ? cookie.substring(0, eqPos) : cookie;
+
+      if (name === '_ga' || name.startsWith('_ga_')) {
+        for (const dom of uniqueDomains) {
+          const domainAttr = dom ? `; domain=${dom}` : '';
+          document.cookie = `${name}=; Path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0${domainAttr}`;
+        }
+      }
+    }
+  }
+
+  function parseUTMParams() {
+    const params = new URLSearchParams(window.location.search);
+    const result = {};
+
+    const allowedSources = ['instagram', 'tiktok', 'youtube', 'facebook', 'linkedin'];
+    const rawSource = params.get('utm_source');
+    if (rawSource && allowedSources.includes(rawSource.toLowerCase())) {
+      result.campaign_source = rawSource.toLowerCase();
+    }
+
+    const rawMedium = params.get('utm_medium');
+    if (rawMedium && rawMedium.toLowerCase() === 'organic_social') {
+      result.campaign_medium = 'organic_social';
+    }
+
+    const safeRegex = /^[a-z0-9_-]{1,64}$/;
+
+    const rawCampaign = params.get('utm_campaign');
+    if (rawCampaign && safeRegex.test(rawCampaign)) {
+      result.campaign_name = rawCampaign;
+    }
+
+    const rawContent = params.get('utm_content');
+    if (rawContent && safeRegex.test(rawContent)) {
+      result.campaign_content = rawContent;
+    }
+
+    return result;
+  }
+
+  function getSanitisedReferrer() {
+    if (!document.referrer) return '';
+    try {
+      const url = new URL(document.referrer);
+      return url.origin + '/';
+    } catch (e) {
+      return '';
+    }
+  }
+
+  function initGA() {
+    if (window.__GA_INITIALIZED__) return;
+
+    const isProd = window.location.hostname === PROD_HOSTNAME;
+
+    if (!isProd) {
+      return;
+    }
+
+    delete window[`ga-disable-${GA_MEASUREMENT_ID}`];
+    window.__GA_INITIALIZED__ = true;
+
+    if (!document.querySelector(`script[src*="googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}"]`)) {
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+      document.head.appendChild(script);
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    window.gtag = gtag;
+
+    gtag('js', new Date());
+    gtag('consent', 'update', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
+
+    const campaignParams = parseUTMParams();
+    const sanitisedReferrer = getSanitisedReferrer();
+
+    const configObj = {
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false,
+      send_page_view: false,
+      cookie_expires: 15552000,
+      cookie_update: false,
+      page_location: 'https://tangata-counselling.co.uk/',
+      page_title: 'Tangata Counselling',
+      page_referrer: sanitisedReferrer
+    };
+
+    Object.assign(configObj, campaignParams);
+
+    gtag('config', GA_MEASUREMENT_ID, configObj);
+
+    const eventObj = {
+      page_location: 'https://tangata-counselling.co.uk/',
+      page_title: 'Tangata Counselling',
+      page_referrer: sanitisedReferrer
+    };
+
+    Object.assign(eventObj, campaignParams);
+
+    gtag('event', 'page_view', eventObj);
+
+    initContactTracking();
+  }
+
+  let contactTrackingBound = false;
+  function initContactTracking() {
+    if (contactTrackingBound) return;
+    contactTrackingBound = true;
+
+    document.addEventListener('click', function (event) {
+      if (getConsentCookie() !== 'analytics_granted') return;
+      if (window[`ga-disable-${GA_MEASUREMENT_ID}`] === true) return;
+      if (typeof window.gtag !== 'function') return;
+
+      const link = event.target.closest('a, button');
+      if (!link) return;
+
+      const href = link.getAttribute('href') || '';
+      let method = null;
+
+      if (href.startsWith('mailto:')) {
+        method = 'email';
+      } else if (href.startsWith('tel:')) {
+        method = 'phone';
+      } else if (href === '#contact' || href.endsWith('/#contact') || href.endsWith('#contact')) {
+        method = 'contact_section';
+      }
+
+      if (method) {
+        window.gtag('event', 'contact_click', {
+          contact_method: method
+        });
+      }
+    });
+  }
+
+  function handleAllow() {
+    setConsentCookie('analytics_granted');
+    const banner = document.getElementById('analytics-consent-banner');
+    if (banner) banner.hidden = true;
+    initGA();
+  }
+
+  function handleDecline() {
+    window[`ga-disable-${GA_MEASUREMENT_ID}`] = true;
+    deleteGACookies();
+    setConsentCookie('analytics_denied');
+    const banner = document.getElementById('analytics-consent-banner');
+    if (banner) banner.hidden = true;
+  }
+
+  function showBanner() {
+    const banner = document.getElementById('analytics-consent-banner');
+    if (banner) {
+      banner.hidden = false;
+      const allowBtn = document.getElementById('consent-allow-btn');
+      if (allowBtn) allowBtn.focus();
+    }
+  }
+
+  function initConsentUI() {
+    const consent = getConsentCookie();
+    const banner = document.getElementById('analytics-consent-banner');
+
+    if (consent === 'analytics_granted') {
+      if (banner) banner.hidden = true;
+      initGA();
+    } else if (consent === 'analytics_denied') {
+      if (banner) banner.hidden = true;
+      window[`ga-disable-${GA_MEASUREMENT_ID}`] = true;
+    } else {
+      if (banner) banner.hidden = false;
+    }
+
+    document.addEventListener('click', function (e) {
+      const allowBtn = e.target.closest('#consent-allow-btn');
+      if (allowBtn) {
+        e.preventDefault();
+        handleAllow();
+        return;
+      }
+
+      const declineBtn = e.target.closest('#consent-decline-btn');
+      if (declineBtn) {
+        e.preventDefault();
+        handleDecline();
+        return;
+      }
+
+      const settingsBtn = e.target.closest('#open-cookie-settings, #privacy-cookie-settings');
+      if (settingsBtn) {
+        e.preventDefault();
+        showBanner();
+        return;
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initConsentUI);
+  } else {
+    initConsentUI();
+  }
+})();
+</script>

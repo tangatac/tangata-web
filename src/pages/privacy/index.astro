@@ -54,12 +54,13 @@ const description = 'How Tangata Counselling handles personal information, cooki
 
     <h2>Who may receive your information?</h2>
     <p>I do not sell personal information or provide it to advertisers.</p>
-    <p>Service providers currently involved in operating the website or handling initial enquiries include:</p>
+    <p>Service providers currently involved in operating the website, analytics or handling initial enquiries include:</p>
     <ul>
       <li><strong>Cloudflare</strong>, which hosts and protects the website;</li>
-      <li><strong>Google Workspace</strong>, which provides my business email service.</li>
+      <li><strong>Google Workspace</strong>, which provides my business email service;</li>
+      <li><strong>Google Analytics (Google LLC)</strong>, which provides optional privacy-minimised website analytics if you explicitly allow analytics.</li>
     </ul>
-    <p>These providers may use sub-processors or process information internationally subject to their contractual data-protection safeguards. Google Workspace provides data-processing terms for organisational customers.</p>
+    <p>These providers may use sub-processors or process information internationally subject to their contractual data-protection safeguards. Google Workspace and Google Analytics provide data-processing terms and safeguards for organisational customers.</p>
     <p>I may disclose information where I am legally required to do so or where disclosure is necessary in a serious safeguarding situation. More detailed confidentiality arrangements apply once counselling begins and are covered in the therapeutic agreement.</p>
 
     <h2>YouTube</h2>
@@ -68,12 +69,32 @@ const description = 'How Tangata Counselling handles personal information, cooki
     <p>Only when you deliberately choose <strong>Play video</strong> is the YouTube privacy-enhanced player loaded from <code>youtube-nocookie.com</code>.</p>
     <p>At that point YouTube becomes a separate third-party service and may process information or use browser storage according to its own privacy arrangements.</p>
 
-    <h2>Website analytics</h2>
-    <p>I use <strong>Cloudflare Web Analytics</strong> to understand how the website is used and how well its pages perform. It provides information such as page views, referral information and website performance metrics.</p>
-    <p>Cloudflare Web Analytics does not use cookies or local storage for analytics, and Cloudflare states that it does not fingerprint individual visitors or collect or use visitors' personal data for Web Analytics.</p>
-    <p>I do not currently use Google Analytics, advertising pixels or behavioural advertising trackers.</p>
-    <p>The website itself does not set cookies, and it does not use localStorage, sessionStorage or similar persistent browser storage for tracking. Because the website does not use cookies or browser storage for analytics, Tangata does not currently display a general cookie-consent banner.</p>
-    <p>The ICO's current rules apply not only to traditional cookies but also to technologies such as tracking pixels, web storage, scripts and similar access technologies.</p>
+    <h2>Website analytics and cookies</h2>
+    <p>I use two analytics tools to help maintain and improve this website:</p>
+
+    <h3>Cloudflare Web Analytics</h3>
+    <p>I use <strong>Cloudflare Web Analytics</strong> for privacy-friendly, page-level traffic measurement. Cloudflare Web Analytics does not use cookies or local storage, does not fingerprint individual visitors, and does not collect personal data.</p>
+
+    <h3>Optional Google Analytics 4</h3>
+    <p>I also use optional <strong>Google Analytics 4 (GA4)</strong> to understand campaign and outreach effectiveness (such as social media links bringing visitors to the site) and whether visitors choose to use contact links.</p>
+    <p>Google Analytics is <strong>optional and only loads if you explicitly choose "Allow analytics"</strong> in the website banner. If you choose "Decline", Google Analytics remains completely unloaded and no data or requests are sent to Google.</p>
+
+    <p>To protect your privacy, GA4 is configured with strict privacy controls:</p>
+    <ul>
+      <li><strong>No sensitive page paths:</strong> GA4 is configured with a sanitised root page context (<code>https://tangata-counselling.co.uk/</code>). Specific page paths, such as therapeutic topics or blog posts, are never sent to Google.</li>
+      <li><strong>No personal or therapy data:</strong> Google Signals, advertising personalisation, User ID, user-provided data, names, email addresses, phone numbers, enquiry contents and client records are strictly disabled and never sent.</li>
+      <li><strong>Sanitised campaign attribution:</strong> Marketing campaign parameters (UTMs) are strictly validated for safe, opaque values before transmission to evaluate outreach channels.</li>
+      <li><strong>Sanitised contact events:</strong> Clicking a contact link only transmits a generic contact method (e.g. email, phone, or contact section) without any text, page location, or personal details.</li>
+    </ul>
+
+    <p><strong>Consent and cookies:</strong> Your consent is the legal basis for loading optional Google Analytics. When you make a choice, a single preference cookie (<code>tangata_consent</code>) is saved for 6 months to remember your decision (Path=/, SameSite=Lax, Secure). Before you make a choice, no analytics cookies exist.</p>
+    <p>If you allow analytics, Google Analytics uses <code>_ga</code> and <code>_ga_&lt;id&gt;</code> cookies to distinguish sessions, configured to expire after 6 months (180 days).</p>
+
+    <p><strong>Withdrawing consent:</strong> You can change your choice at any time by clicking the <button type="button" class="cookie-settings-link" id="privacy-cookie-settings">Cookie settings</button> control in the website footer. Withdrawing consent immediately disables Google Analytics, deletes Google Analytics cookies from your browser, and saves your declined preference.</p>
+
+    <p><strong>International transfers:</strong> Google processes analytics data as a processor under its applicable transfer safeguards and data-processing terms. For more details on how Google processes data, please review <a href="https://policies.google.com/technologies/partner-sites?hl=en-GB" target="_blank" rel="noopener noreferrer">How Google uses information from sites or apps that use our services</a>.</p>
+
+    <p>I do not use advertising pixels, behavioural remarketing, or third-party marketing cookies.</p>
 
     <h2>External links</h2>
     <p>The website links to other organisations and services, including professional bodies, research sources and social-media platforms.</p>

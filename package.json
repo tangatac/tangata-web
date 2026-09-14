@@ -11,7 +11,8 @@
         "test": "playwright test",
         "astro": "astro",
         "preview": "astro preview",
-        "test:a11y": "playwright test tests/accessibility.spec.js"
+        "test:a11y": "playwright test tests/accessibility.spec.js",
+        "test:analytics": "playwright test --project=analytics"
     },
     "dependencies": {
         "@astrojs/sitemap": "^3.7.3",

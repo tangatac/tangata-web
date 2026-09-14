@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import AnalyticsConsent from '../components/AnalyticsConsent.astro';
 import JsonLd from '../components/JsonLd.astro';
 import { SITE, baseGraph } from '../lib/site.mjs';
 
@@ -102,6 +103,7 @@ const graph = [...baseGraph(base.href.replace(/\/$/, '')), ...jsonLd];
       <slot />
     </main>
     <Footer />
+    <AnalyticsConsent />
     <script>
       document.addEventListener('click', (event) => {
         const trigger = event.target.closest('.youtube-facade');
