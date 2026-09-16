@@ -51,7 +51,7 @@ const links = SOCIAL_LINKS.filter((s) => ICONS[s.label]);
                 <li>
                   <a
                     href={s.href}
-                    aria-label={s.label}
+                    aria-label={s.label === 'X' ? 'X (formerly Twitter)' : s.label}
                     rel={s.href === '#' ? undefined : 'me noopener'}
                     target={s.href === '#' ? undefined : '_blank'}
                   >

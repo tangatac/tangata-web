@@ -59,7 +59,7 @@
     const params = new URLSearchParams(window.location.search);
     const result = {};
 
-    const allowedSources = ['instagram', 'tiktok', 'youtube', 'facebook', 'linkedin'];
+    const allowedSources = ['instagram', 'tiktok', 'youtube', 'facebook', 'linkedin', 'x'];
     const rawSource = params.get('utm_source');
     if (rawSource && allowedSources.includes(rawSource.toLowerCase())) {
       result.campaign_source = rawSource.toLowerCase();

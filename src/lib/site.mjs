@@ -48,6 +48,7 @@ export const SOCIAL_LINKS = [
   { label: 'TikTok', href: 'https://www.tiktok.com/@nicktemdr' },
   { label: 'Facebook', href: 'https://www.facebook.com/TangataCounselling' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/nick-tuftnell-6398431' },
+  { label: 'X', href: 'https://x.com/ntuftnell' },
 ];
 
 /** Real (non-placeholder) social URLs, for structured-data `sameAs`. */

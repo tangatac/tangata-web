@@ -133,6 +133,13 @@ test.describe('Privacy-Minimised GA4 Analytics Setup', () => {
     expect(opts.campaign_name).toBe('social_launch_01');
     expect(opts.campaign_content).toBe('s1b1');
 
+    await page.goto('/?utm_source=x');
+
+    const xDataLayer = await page.evaluate(() => window.dataLayer || []);
+    const xConfigCall = xDataLayer.find((item) => item[0] === 'config' && item[1] === 'G-9HSR1KNKWG');
+    expect(xConfigCall).toBeDefined();
+    expect(xConfigCall[2].campaign_source).toBe('x');
+
     // Test invalid UTMs
     await page.context().clearCookies();
     await page.goto('/?utm_source=unauthorized_source&utm_medium=cpc&utm_campaign=bad%20spaces&utm_content=toolong'.repeat(10));
