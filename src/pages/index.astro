@@ -11,7 +11,7 @@ import YouTube from '../components/YouTube.astro';
 // Leave it empty ('') to show the placeholder box instead.
 const heroVideo = 'https://youtu.be/TY90eGxSI6E?si=bGjd9L4rc0wytgmI';
 const heroVideoId = youTubeId(heroVideo);
-const showTestimonials = false;
+const showTestimonials = true;
 
 // ── Latest blog posts (pulled automatically from src/content/blog) ─────
 const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
@@ -269,11 +269,19 @@ const homeJsonLd = [
             <h2>What working together can feel like</h2>
           </div>
           <div class="quotes">
-            <div class="quote"><p>&ldquo;For the first time I felt genuinely heard, and something that had weighed on me for years finally lifted.&rdquo;</p><div class="who">— example placement</div></div>
-            <div class="quote"><p>&ldquo;Nick made EMDR feel safe and completely unhurried. I never felt pushed.&rdquo;</p><div class="who">— example placement</div></div>
-            <div class="quote"><p>&ldquo;I came in sceptical and left with tools I still use every day.&rdquo;</p><div class="who">— example placement</div></div>
+            <figure class="quote">
+              <blockquote><p>“I had EMDR therapy online with Nick for six months and it has had a huge positive impact on my life. It feels like the difficult aspects of my past have finally been laid to rest and I can get on with my present and future. Nick’s calm, empathetic and professional approach made this by far the most effective therapy I have had. I would highly recommend him!”</p></blockquote>
+              <figcaption class="who">Anonymous</figcaption>
+            </figure>
+            <figure class="quote">
+              <blockquote><p>“Nick is a man who can walk in the shoes of someone else, not in front or behind, alongside you, guiding you back from the dark into the light with no prejudice.”</p></blockquote>
+              <figcaption class="who">Anonymous</figcaption>
+            </figure>
+            <figure class="quote">
+              <blockquote><p>“Working with Nick has been one of the best things I have ever done. It has helped me to work through a lot of issues and given me a lot of  tools that I use in my day-to-day life. I would recommend him to anyone looking for counselling.”</p></blockquote>
+              <figcaption class="who">Anonymous</figcaption>
+            </figure>
           </div>
-          <p class="ph-note">Your own anonymised client feedback would appear here — with consent, and no identifying details.</p>
         </div>
       </section>
     )

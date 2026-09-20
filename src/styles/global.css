@@ -140,7 +140,7 @@ section.band.tint{background:var(--pale);}
 @media(max-width:820px){.locs{grid-template-columns:1fr;}}
 
 /* testimonials */
-.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start;}
 .quote{background:var(--cream);border-radius:var(--r);padding:26px;border:1px dashed var(--sky);}
 .quote p{font-family:var(--fdisp);font-style:italic;font-size:1.05rem;color:var(--deep);margin-bottom:14px;line-height:1.5;}
 .quote .who{font-size:.85rem;color:var(--muted);font-weight:600;}
