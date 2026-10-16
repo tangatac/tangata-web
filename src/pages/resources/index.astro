@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const description = 'Resources I may share with clients to support our work between sessions.';
+---
+
+<BaseLayout title="Resources" description={description} noindex>
+  <section class="article-hero">
+    <div class="wrap">
+      <h1>Resources</h1>
+      <p>{description}</p>
+    </div>
+  </section>
+
+  <div class="article-body">
+    <section aria-labelledby="lightstream-title">
+      <h2 id="lightstream-title">Lightstream</h2>
+      <p>A short guided exercise to use if we’ve discussed it together in therapy.</p>
+      <audio controls preload="metadata" aria-labelledby="lightstream-title">
+        <source src="/audio/lightstream.mp3" type="audio/mpeg" />
+        Your browser does not support audio playback. <a href="/audio/lightstream.mp3" download>Download Lightstream MP3</a>.
+      </audio>
+      <p><a href="/audio/lightstream.mp3" download>Download Lightstream MP3</a></p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .article-body { padding-bottom: 48px; }
+  h2 { margin-top: 0; }
+  section p { margin-bottom: 18px; }
+  audio { display: block; width: 100%; min-width: 0; margin: 22px 0 18px; }
+</style>

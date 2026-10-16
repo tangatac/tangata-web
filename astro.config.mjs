@@ -9,7 +9,7 @@ export default defineConfig({
   site: 'https://tangata-counselling.co.uk',
   // Canonical URLs, internal links and the sitemap all use a trailing slash.
   trailingSlash: 'always',
-  integrations: [sitemap()],
+  integrations: [sitemap({ filter: (page) => new URL(page).pathname !== '/resources/' })],
   markdown: {
     // These run on every blog post:
     //  - remarkReadingTime: adds an automatic "x min read" estimate

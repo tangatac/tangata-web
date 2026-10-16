@@ -1,10 +1,10 @@
 ---
 title: "EMDR and Safety: How Do You Stay Grounded When Working With Difficult Memories?"
 description: "How EMDR prioritises safety, grounding and preparation when working with difficult memories."
-date: 2026-09-02
+date: 2026-10-16
 category: EMDR
 author: Nick Tuftnell
-draft: true
+draft: false
 ---
 
 When people hear about EMDR, one of the first questions they often ask me is: **“Is it safe?”**
