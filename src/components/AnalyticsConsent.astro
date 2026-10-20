@@ -1,4 +1,11 @@
 ---
+import { getAnalyticsPageId } from '../lib/analytics-pages.mjs';
+
+// Resolve at build time; only this page's opaque ID reaches the browser.
+const analyticsPageId = getAnalyticsPageId(Astro.url.pathname);
+if (!analyticsPageId && Astro.url.pathname !== '/404/') {
+  throw new Error(`Add a stable analytics ID for ${Astro.url.pathname} to src/data/analytics-pages.json`);
+}
 ---
 <div id="analytics-consent-banner" class="consent-banner" role="region" aria-label="Analytics consent" hidden>
   <div class="wrap consent-inner">
@@ -13,11 +20,19 @@
   </div>
 </div>
 
-<script is:inline>
+<script is:inline define:vars={{ analyticsPageId }}>
 (function () {
   const GA_MEASUREMENT_ID = 'G-9HSR1KNKWG';
   const COOKIE_NAME = 'tangata_consent';
   const PROD_HOSTNAME = 'tangata-counselling.co.uk';
+
+  function getPageContext() {
+    return {
+      page_location: `https://tangata-counselling.co.uk/p/${analyticsPageId}`,
+      page_title: 'Tangata Counselling',
+      page_referrer: getSanitisedReferrer()
+    };
+  }
 
   function getConsentCookie() {
     const match = document.cookie.match(/(?:^|; )tangata_consent=([^;]*)/);
@@ -100,7 +115,8 @@
 
     const isProd = window.location.hostname === PROD_HOSTNAME;
 
-    if (!isProd) {
+    // Unknown routes and the shared 404 page must never acquire a misleading ID.
+    if (!isProd || !analyticsPageId) {
       return;
     }
 
@@ -110,6 +126,7 @@
     if (!document.querySelector(`script[src*="googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}"]`)) {
       const script = document.createElement('script');
       script.async = true;
+      script.referrerPolicy = 'no-referrer';
       script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
       document.head.appendChild(script);
     }
@@ -127,7 +144,7 @@
     });
 
     const campaignParams = parseUTMParams();
-    const sanitisedReferrer = getSanitisedReferrer();
+    const pageContext = getPageContext();
 
     const configObj = {
       allow_google_signals: false,
@@ -135,20 +152,14 @@
       send_page_view: false,
       cookie_expires: 15552000,
       cookie_update: false,
-      page_location: 'https://tangata-counselling.co.uk/',
-      page_title: 'Tangata Counselling',
-      page_referrer: sanitisedReferrer
+      ...pageContext
     };
 
     Object.assign(configObj, campaignParams);
 
     gtag('config', GA_MEASUREMENT_ID, configObj);
 
-    const eventObj = {
-      page_location: 'https://tangata-counselling.co.uk/',
-      page_title: 'Tangata Counselling',
-      page_referrer: sanitisedReferrer
-    };
+    const eventObj = { ...pageContext };
 
     Object.assign(eventObj, campaignParams);
 
@@ -183,6 +194,7 @@
 
       if (method) {
         window.gtag('event', 'contact_click', {
+          ...getPageContext(),
           contact_method: method
         });
       }

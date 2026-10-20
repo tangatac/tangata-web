@@ -1,0 +1,23 @@
+[
+  { "id": "001", "route": "/", "name": "Home" },
+  { "id": "002", "route": "/emdr/", "name": "EMDR overview" },
+  { "id": "003", "route": "/emdr/grief-and-loss/", "name": "EMDR for grief and loss" },
+  { "id": "004", "route": "/blog/", "name": "Blog index" },
+  { "id": "005", "route": "/emdr/anxiety/", "name": "EMDR for anxiety" },
+  { "id": "006", "route": "/emdr/low-self-esteem/", "name": "EMDR for low self-esteem" },
+  { "id": "007", "route": "/emdr/phobias/", "name": "EMDR for phobias" },
+  { "id": "008", "route": "/emdr/could-emdr-help/", "name": "Could EMDR help?" },
+  { "id": "009", "route": "/emdr/trauma-and-ptsd/", "name": "EMDR for trauma and PTSD" },
+  { "id": "010", "route": "/fees/", "name": "Fees" },
+  { "id": "011", "route": "/privacy/", "name": "Privacy notice" },
+  { "id": "012", "route": "/terms/", "name": "Terms" },
+  { "id": "013", "route": "/accessibility/", "name": "Accessibility" },
+  { "id": "014", "route": "/resources/", "name": "Resources" },
+  { "id": "015", "route": "/blog/balance-in-mental-health-the-elixir-of-life/", "name": "Balance in mental health" },
+  { "id": "016", "route": "/blog/benefits-of-sleep-and-learning-to-sleep-well/", "name": "Benefits of sleep" },
+  { "id": "017", "route": "/blog/counselling-social-anxiety/", "name": "Counselling and social anxiety" },
+  { "id": "018", "route": "/blog/exercise-and-mental-health/", "name": "Exercise and mental health" },
+  { "id": "019", "route": "/blog/loneliness-how-to-reduce-with-small-gestures/", "name": "Loneliness and small gestures" },
+  { "id": "020", "route": "/blog/s1b1-what-is-emdr/", "name": "What is EMDR?" },
+  { "id": "021", "route": "/blog/s1b2-emdr-and-safety-staying-grounded-with-difficult-memories/", "name": "EMDR and safety" }
+]

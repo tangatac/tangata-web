@@ -1,0 +1,3 @@
+# Historical EMDR overview: permanent HTTP redirects handled by Cloudflare assets.
+/emdr-therapy/ /emdr/ 301
+/emdr-therapy /emdr/ 301

@@ -1,6 +1,14 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
+test.beforeEach(async ({ context }) => {
+  // Block third parties in every suite, including deliberate YouTube activation tests.
+  await context.route('**/*', route => {
+    const url = new URL(route.request().url());
+    return url.origin === 'http://127.0.0.1:3000' ? route.continue() : route.abort();
+  });
+});
+
 test.describe('Accessibility Audit - WCAG 2.2 AA', () => {
   // Representative pages for testing
   const pages = [
@@ -10,6 +18,7 @@ test.describe('Accessibility Audit - WCAG 2.2 AA', () => {
     { name: 'EMDR Topic', path: '/emdr/trauma-and-ptsd/' },
     { name: 'Fees', path: '/fees/' },
     { name: 'Accessibility', path: '/accessibility/' },
+    { name: 'Privacy', path: '/privacy/' },
   ];
 
   pages.forEach(({ name, path }) => {
